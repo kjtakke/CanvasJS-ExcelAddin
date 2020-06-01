@@ -1,6 +1,26 @@
 Sub testing()
-Debug.Print (ChartOptions("chartContainer2", chartType_01:="barChart", label_01:=Range("A2:A20"), yRng_01:=Range("B2:B20")))
+
+Debug.Print ( _
+    ChartOptions( _
+        "chartContainer2", _
+        chartType_01:="columnChart", _
+        label_01:=Range("A2:A57"), _
+        yRng_01:=Range("C2:C57"), _
+        chartType_02:="lineChart", _
+        label_02:=Range("A2:A57"), _
+        yRng_02:=Range("D2:D57"), _
+        chartType_03:="stackedAreaChart", _
+        label_03:=Range("A2:A57"), _
+        yRng_03:=Range("g2:g57"), _
+        chartType_04:="stackedAreaChart", _
+        label_04:=Range("A2:A57"), _
+        yRng_04:=Range("f2:f57"), _
+        aggFunct:="sum" _
+    ) _
+)
+
 End Sub
+
 
 
 'Chart Options  variable prefix Chart & ChartOption
@@ -18,23 +38,56 @@ Function ChartOptions( _
     ) As String
 
 
-'Count number of datasets
+'Dataset Arrays
+
 On Error Resume Next
 Dim datasetCount As Integer
 datasetCount = 1
 Dim labelSets(1 To 5) As Variant
-labelSets(1) = label_01
-labelSets(2) = label_02
-labelSets(3) = label_03
-labelSets(4) = label_04
-labelSets(5) = label_05
-For Each iteme In datasets
-    If IsEmpty(datasets(datasetCount)) Then Exit For
-    datasetCount = datasetCount + 1
-Next
-datasetCount = datasetCount - 1
+labelSets(1) = label_01.Address
+labelSets(2) = label_02.Address
+labelSets(3) = label_03.Address
+labelSets(4) = label_04.Address
+labelSets(5) = label_05.Address
+
+    'Count number of dataset
+    For i = 1 To 5
+        If IsEmpty(labelSets(i)) Then Exit For
+        datasetCount = datasetCount + 1
+    Next
+    datasetCount = datasetCount - 1
+
+Dim yRngSets(1 To 5) As Variant
+yRngSets(1) = yRng_01.Address
+yRngSets(2) = yRng_02.Address
+yRngSets(3) = yRng_03.Address
+yRngSets(4) = yRng_04.Address
+yRngSets(5) = yRng_05.Address
+
+Dim xRngSets(1 To 5) As Variant
+xRngSets(1) = xRng_01.Address
+xRngSets(2) = xRng_02.Address
+xRngSets(3) = xRng_03.Address
+xRngSets(4) = xRng_04.Address
+xRngSets(5) = xRng_05.Address
+
+Dim nameSets(1 To 5) As Variant
+nameSets(1) = name_01.Address
+nameSets(2) = name_02.Address
+nameSets(3) = name_03.Address
+nameSets(4) = name_04.Address
+nameSets(5) = name_05.Address
+
+Dim chartTypeSets(1 To 5) As Variant
+chartTypeSets(1) = chartType_01
+chartTypeSets(2) = chartType_02
+chartTypeSets(3) = chartType_03
+chartTypeSets(4) = chartType_04
+chartTypeSets(5) = chartType_05
+
+
 On Error GoTo 0
-'datasets = Empty
+
 
 'Aggrigration function sum or count
 If aggFunct = "" Then aggFunct = "sum"
@@ -181,16 +234,20 @@ ChartOptions = "var chart = new CanvasJS.Chart('" & container & "'," & vbNewLine
 'tooltip
 
 'data
-Dim data As String
+Dim data, chartType As String
+ChartOptions = ChartOptions & "data: [" & vbNewLine
 
 
-ChartOptions = ChartOptions & "data: [" & vbNewLine '& "type: 'bar'," & vbNewLine
+
+
+
 For i = 1 To datasetCount
+    chartType = chartTypeSets(i)
     
-    data = data & ChartTypesFunction(chartType_01)
+    data = data & ChartTypesFunction(chartType)
         'Add DataPoints
         data = data & "dataPoints: [" & vbNewLine
-            data = data & CreateDatapoints(labelRng:=label_01, yRng:=yRng_01, aggFunct:=aggFunct, chartType:=chartType_01)
+            data = data & CreateDatapoints(labelRng:=Range(labelSets(i)), yRng:=Range(yRngSets(i)), aggFunct:=aggFunct, chartType:=chartType)
 
 
 data = data & vbNewLine & "]}," & vbNewLine
@@ -609,3 +666,4 @@ End Function
     '        mouseover
     '        MouseMove
     '        mouseout
+
