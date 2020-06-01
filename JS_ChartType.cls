@@ -29,25 +29,25 @@ Function ChartTypesFunction(enumInput) As String
         Case enumInput = "barChart"
         ChartTypesFunction = "{" & vbNewLine & "type: '" & "bar" & "', " & vbNewLine
         
-        Case enumInput = "ColumnChart"
+        Case enumInput = "columnChart"
         ChartTypesFunction = "{" & vbNewLine & "type: '" & "column" & "', " & vbNewLine
         
         Case enumInput = "ScatterPlotChart"
         ChartTypesFunction = "{" & vbNewLine & "type: '" & "scatter" & "', " & vbNewLine
         
-        Case enumInput = "BoxChart"
+        Case enumInput = "boxChart"
         ChartTypesFunction = "{" & vbNewLine & "type: '" & "boxAndWhisker" & "', " & vbNewLine
         
         Case enumInput = "funnelChart"
         ChartTypesFunction = "{" & vbNewLine & "type: '" & "funnel" & "', " & vbNewLine
         
-        Case enumInput = "DoughnutChart"
+        Case enumInput = "doughnutChart"
         ChartTypesFunction = "{" & vbNewLine & "type: '" & "Doughnut Chart" & "', " & vbNewLine
         
         Case enumInput = "pyramidChart"
         ChartTypesFunction = "{" & vbNewLine & "type: '" & "pyramid" & "', " & vbNewLine
         
-        Case enumInput = "StackedColumn100Chart"
+        Case enumInput = "stackedColumn100Chart"
         ChartTypesFunction = "{" & vbNewLine & "type: '" & "stackedColumn100" & "', " & vbNewLine
         
         Case enumInput = "rangeBarChart"
