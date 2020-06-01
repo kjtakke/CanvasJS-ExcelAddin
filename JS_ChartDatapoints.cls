@@ -32,20 +32,37 @@ labelCount = i - 1
     ReDim dataset(1 To labelCount, 1 To 4)
     For i = 1 To labelCount
         dataset(i, 1) = unique_label(i, 1)
+        dataset(i, 2) = 0
+        dataset(i, 3) = 0
+        dataset(i, 4) = 0
     Next i
     unique_label = Empty
     
     
-    Select Case True
+
     
         'Bar and Column Charts
-        Case chartType = "barChart", "ColumnChart", "LineChart", "AreaChart", "pieChart", "waterfallChart", "pyramidChart", "DoughnutChart", "funnelChart", "stackedAreaChart", "stackedBarChart", "stackedBar100Chart", "StackedColumn100Chart", "stackedColumnChart"
+        If chartType = "barChart" Or _
+        chartType = "columnChart" Or _
+        chartType = "lineChart" Or _
+        chartType = "areaChart" Or _
+        chartType = "pieChart" Or _
+        chartType = "waterfallChart" Or _
+        chartType = "pyramidChart" Or _
+        chartType = "doughnutChart" Or _
+        chartType = "funnelChart" Or _
+        chartType = "stackedAreaChart" Or _
+        chartType = "stackedBarChart" Or _
+        chartType = "stackedBar100Chart" Or _
+        chartType = "stackedColumn100Chart" Or _
+        chartType = "stackedColumnChart" Then
             If aggFunct = "sum" Then
                 'Values Sum
                 For i = 1 To labelCount
                     For j = i To UBound(label)
                         If label(j, 1) = dataset(i, 1) Then dataset(i, 2) = dataset(i, 2) + yValues(j, 1)
                     Next j
+                    
                 Next i
             
             ElseIf aggFunct = "count" Then
@@ -65,13 +82,13 @@ labelCount = i - 1
             
 
 
-        Case chartType = "Pie"
+        ElseIf chartType = "Pie" Then
 
 
 
 
 
-    End Select
+    End If
 CreateDatapoints = chartData
 End Function
 
@@ -87,50 +104,61 @@ Function ChartLineData(chartType As String, y As Variant, Optional x As Variant,
         ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
         'Column Chart { x: '10', y: 71 },
-        Case chartType = "ColumnChart"
-        ChartLineData = "{ x:'" & x & "', y:" & y & " }," & vbNewLine
+        Case chartType = "columnChart"
+        'ChartLineData = "{ x:'" & x & "', y:" & y & " }," & vbNewLine
+        ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
         'Line Chart { y: 450 },
         Case chartType = "lineChart"
-        ChartLineData = "{ y:" & y & " }," & vbNewLine
+        'ChartLineData = "{ y:" & y & " }," & vbNewLine
+        ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
         'Area Chart { x: 1, y: 74.4, label: "text" },
         Case chartType = "areaChart"
-        ChartLineData = "{ x: '" & x & "', y:" & y & ", label: '" & lable & "' }," & vbNewLine
+        'ChartLineData = "{ x: '" & x & "', y:" & y & ", label: '" & lable & "' }," & vbNewLine
+        ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
         Case chartType = "pieChart"
         'Pie Chart { y: 51.08, label: "Chrome" },
-        ChartLineData = "{ y: " & y & ", label: '" & label & "'}," & vbNewLine
+        'ChartLineData = "{ y: " & y & ", label: '" & label & "'}," & vbNewLine
+        ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
         'Waterfall Chart { label: "Sales",  y: 1273 },
         Case chartType = "waterfallChart"
-        ChartLineData = "{ label:'" & label & "', y: " & y & " }," & vbNewLine
+        'ChartLineData = "{ label:'" & label & "', y: " & y & " }," & vbNewLine
+        ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
         'Funnel Chart { y: 1400, label: "Leads" },
         Case chartType = "funnelChart"
-        ChartLineData = "{ y:" & y & ", label: '" & lable & "' }," & vbNewLine
+        'ChartLineData = "{ y:" & y & ", label: '" & lable & "' }," & vbNewLine
+        ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
         'Doughnut Chart { y: 67, label: "Inbox" },
-        Case chartType = "DoughnutChart"
-        ChartLineData = "{ y:" & y & ", label: '" & lable & "' }," & vbNewLine
+        Case chartType = "doughnutChart"
+        'ChartLineData = "{ y:" & y & ", label: '" & lable & "' }," & vbNewLine
+        ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
         'Doughnut Chart { y: 67, label: "Inbox" },
         Case chartType = "pyramidChart"
-        ChartLineData = "{ y:" & y & ", label: '" & lable & "' }," & vbNewLine
+        'ChartLineData = "{ y:" & y & ", label: '" & lable & "' }," & vbNewLine
+        ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
         
         'MULTI ARRAY
         'Stacked Area Chart { x: 1, y: 3000 },
         Case chartType = "stackedAreaChart"
-        ChartLineData = "{ x: '" & x & "', y:" & y & " }," & vbNewLine
+        'ChartLineData = "{ x: '" & x & "', y:" & y & " }," & vbNewLine
+        ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
         'Stacked Column 100% Chart { x: 'Date', y: 40 },
-        Case chartType = "StackedColumn100perChart"
-        ChartLineData = "{ x:'" & x & "', y:" & y & " }," & vbNewLine
+        Case chartType = "stackedColumn100Chart"
+        'ChartLineData = "{ x:'" & x & "', y:" & y & " }," & vbNewLine
+        ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
         'Stacked Column { y: 6.75, x: 'Date' },
         Case chartType = "stackedColumnChart"
-        ChartLineData = "{ y:" & y & ", x: '" & x & "' }," & vbNewLine
+        'ChartLineData = "{ y:" & y & ", x: '" & x & "' }," & vbNewLine
+        ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
         
     
@@ -167,3 +195,4 @@ Function ChartLineData(chartType As String, y As Variant, Optional x As Variant,
         
     End Select
 End Function
+
