@@ -7,7 +7,8 @@ Function CreateDatapoints( _
                                 Optional name As Range _
                           ) As String
 
-'__Init__
+'INITILISE
+'##################################################################################################################################
 Dim label, yValues, xValues, unique_label As Variant
 Dim chartData As String
 On Error Resume Next
@@ -19,8 +20,8 @@ aggFunct = aggFunct
 On Error GoTo 0
 
 
-
-'Dataset
+'DATASETS
+'##################################################################################################################################
 Dim labelCount As Long
 For i = 1 To UBound(unique_label)
     If unique_label(i, 1) = "" Then Exit For
@@ -40,8 +41,8 @@ labelCount = i - 1
     
     
 
-    
-        'Bar and Column Charts
+ '2 POINT CHARTS
+'##################################################################################################################################
         If chartType = "barChart" Or _
         chartType = "columnChart" Or _
         chartType = "lineChart" Or _
@@ -80,15 +81,30 @@ labelCount = i - 1
                 chartData = chartData & ChartLineData(chartType:=chartType, y:=dataset(i, 2), label:=dataset(i, 1))
             Next i
             
-
-
+'3 POINT CHARTS
+'##################################################################################################################################
         ElseIf chartType = "Pie" Then
 
 
 
 
+'4 POINT CHARTS
+'##################################################################################################################################
+        ElseIf chartType = "Bubble" Then
+
+
+
+
+'4 POINT CHARTS
+'##################################################################################################################################
+        ElseIf chartType = "Box" Then
+
+
 
     End If
+
+'RESULT
+'##################################################################################################################################
 CreateDatapoints = chartData
 End Function
 
@@ -100,6 +116,9 @@ Function ChartLineData(chartType As String, y As Variant, Optional x As Variant,
     '"stackedAreaChart", "stackedBarChart", "stackedBar100Chart", "StackedColumn100Chart", "stackedColumnChart",
         'SIMPLE CHART
         'Bar Chart { y: 3, label: "Sweden" },
+        
+'2 POINT CHARTS
+'##################################################################################################################################
         Case chartType = "barChart"
         ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
         
@@ -142,9 +161,7 @@ Function ChartLineData(chartType As String, y As Variant, Optional x As Variant,
         Case chartType = "pyramidChart"
         'ChartLineData = "{ y:" & y & ", label: '" & lable & "' }," & vbNewLine
         ChartLineData = "{ y:" & y & ", label: '" & label & "' }," & vbNewLine
-        
-        
-        'MULTI ARRAY
+
         'Stacked Area Chart { x: 1, y: 3000 },
         Case chartType = "stackedAreaChart"
         'ChartLineData = "{ x: '" & x & "', y:" & y & " }," & vbNewLine
@@ -162,8 +179,8 @@ Function ChartLineData(chartType As String, y As Variant, Optional x As Variant,
         
         
     
-        
-        'RANGE CHART
+'3 POINT CHARTS
+'##################################################################################################################################
         
         'Range Area Chart { x: 'txt'), y:[15, 21] },
         Case chartType = "rangeAreaChart"
@@ -172,14 +189,6 @@ Function ChartLineData(chartType As String, y As Variant, Optional x As Variant,
         'Scatter Plot Chart { x: 800, y: 350 },
         Case chartType = "ScatterPlotChart"
         ChartLineData = "{ x:" & x & ", y:" & y & " }," & vbNewLine
-        
-        'Box Chart { x: 'Date',  y: [4, 6, 8, 9, 7] },
-        Case chartType = "BoxChart"
-        ChartLineData = "{ x: '" & x & "', y:[" & y & "] }," & vbNewLine
-        
-        'CandlestickChart Chart { x: 'Date', y: [34.080002, 36.060001, 33.410000, 36.060001] },
-        Case chartType = "candlestickChart"
-        ChartLineData = "{ x: '" & x & "', y:[" & y & "] }," & vbNewLine
         
         'Range Bar Chart { x: 10, y:[80, 115], label: "Data Scientist" },
         Case chartType = "rangeBarChart"
@@ -190,9 +199,21 @@ Function ChartLineData(chartType As String, y As Variant, Optional x As Variant,
         ChartLineData = "{ x: '" & x & "', y:[" & y & "] }," & vbNewLine
         
         
-        
+'4 POINT CHARTS
+'##################################################################################################################################
+
+        'CandlestickChart Chart { x: 'Date', y: [34.080002, 36.060001, 33.410000, 36.060001] },
+        Case chartType = "candlestickChart"
+        ChartLineData = "{ x: '" & x & "', y:[" & y & "] }," & vbNewLine
       
+'5 POINT CHARTS
+'##################################################################################################################################
+                'Box Chart { x: 'Date',  y: [4, 6, 8, 9, 7] },
+        Case chartType = "BoxChart"
+        ChartLineData = "{ x: '" & x & "', y:[" & y & "] }," & vbNewLine
+        
         
     End Select
 End Function
+
 
