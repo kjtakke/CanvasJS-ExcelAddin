@@ -1,5 +1,3 @@
-
-
 Function ChartTypesFunction(enumInput) As String
     Select Case True
         Case enumInput = "candlestickChart"
