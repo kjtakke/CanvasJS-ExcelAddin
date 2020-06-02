@@ -34,12 +34,74 @@ Function ChartOptions( _
     Optional yRng_01 As Range, Optional yRng_02 As Range, Optional yRng_03 As Range, Optional yRng_04 As Range, Optional yRng_05 As Range, _
     Optional xRng_01 As Range, Optional xRng_02 As Range, Optional xRng_03 As Range, Optional xRng_04 As Range, Optional xRng_05 As Range, _
     Optional name_01 As Range, Optional name_02 As Range, Optional name_03 As Range, Optional name_04 As Range, Optional name_05 As Range, _
-    Optional chartType_01 As String, Optional chartType_02 As String, Optional chartType_03 As String, Optional chartType_04 As String, Optional chartType_05 As String _
+    Optional datasetName_01 As Range, Optional datasetName_02 As Range, Optional datasetName_03 As Range, Optional datasetName_04 As Range, Optional datasetName_05 As Range, _
+    Optional chartType_01 As String, Optional chartType_02 As String, Optional chartType_03 As String, Optional chartType_04 As String, Optional chartType_05 As String, _
+    Optional legendEnabled As String _
     ) As String
 
 
-'Dataset Arrays
 
+'Dim container As String
+'Dim ChartinteractivityEnabled As String
+'Dim ChartanimationDuration As String
+'Dim ChartAnimationEnabled As String
+'Dim ChartexportFileName As String
+'Dim ChartexportEnabled As String
+'Dim ChartzoomEnabled As String
+'Dim ChartzoomType As String
+'Dim Charttheme As String
+'Dim ChartbackgroundColor As String
+'Dim ChartcolorSet As String
+'Dim Chartwidth As String
+'Dim ChartHeight As String
+'Dim ChartdataPointMaxWidth As String
+'Dim ChartdataPointMinWidth As String
+'Dim ChartdataPointWidth As String
+'Dim aggFunct As String
+'Dim label01 As String
+'Dim label02 As String
+'Dim label03 As String
+'Dim label04 As String
+'Dim label05 As String
+'Dim yRng01 As String
+'Dim yRng02 As String
+'Dim yRng03 As String
+'Dim yRng04 As String
+'Dim yRng05 As String
+'Dim xRng01 As String
+'Dim xRng02 As String
+'Dim xRng03 As String
+'Dim xRng04 As String
+'Dim xRng05 As String
+'Dim name01 As String
+'Dim name02 As String
+'Dim name03 As String
+'Dim name04 As String
+'Dim name05 As String
+'Dim datasetName01 As String
+'Dim datasetName02 As String
+'Dim datasetName03 As String
+'Dim datasetName04 As String
+'Dim datasetName05 As String
+'Dim chartType01 As String
+'Dim chartType02 As String
+'Dim chartType03 As String
+'Dim chartType04 As String
+'Dim chartType05 As String
+'Dim legendEnabled As String
+
+
+
+
+
+
+
+
+
+'DATASET SERIES ARRAYS
+'##################################################################################################################################
+
+'Dataset Arrays
 On Error Resume Next
 Dim datasetCount As Integer
 datasetCount = 1
@@ -56,7 +118,8 @@ labelSets(5) = label_05.Address
         datasetCount = datasetCount + 1
     Next
     datasetCount = datasetCount - 1
-
+    
+'Y Series
 Dim yRngSets(1 To 5) As Variant
 yRngSets(1) = yRng_01.Address
 yRngSets(2) = yRng_02.Address
@@ -64,6 +127,7 @@ yRngSets(3) = yRng_03.Address
 yRngSets(4) = yRng_04.Address
 yRngSets(5) = yRng_05.Address
 
+'X Series
 Dim xRngSets(1 To 5) As Variant
 xRngSets(1) = xRng_01.Address
 xRngSets(2) = xRng_02.Address
@@ -71,6 +135,7 @@ xRngSets(3) = xRng_03.Address
 xRngSets(4) = xRng_04.Address
 xRngSets(5) = xRng_05.Address
 
+'Name Series
 Dim nameSets(1 To 5) As Variant
 nameSets(1) = name_01.Address
 nameSets(2) = name_02.Address
@@ -78,6 +143,7 @@ nameSets(3) = name_03.Address
 nameSets(4) = name_04.Address
 nameSets(5) = name_05.Address
 
+'Chart Type Series
 Dim chartTypeSets(1 To 5) As Variant
 chartTypeSets(1) = chartType_01
 chartTypeSets(2) = chartType_02
@@ -85,9 +151,21 @@ chartTypeSets(3) = chartType_03
 chartTypeSets(4) = chartType_04
 chartTypeSets(5) = chartType_05
 
+'Dataset Name Series
+Dim datasetNameSets(1 To 5) As Variant
+datasetNameSets(1) = datasetName_01
+datasetNameSets(2) = datasetName_02
+datasetNameSets(3) = datasetName_03
+datasetNameSets(4) = datasetName_04
+datasetNameSets(5) = datasetName_05
 
+'Reset Errors
 On Error GoTo 0
 
+
+
+'INITILISE INPUT VARIABLES
+'##################################################################################################################################
 
 'Aggrigration function sum or count
 If aggFunct = "" Then aggFunct = "sum"
@@ -200,62 +278,113 @@ ChartOptions = "var chart = new CanvasJS.Chart('" & container & "'," & vbNewLine
     End If
 
 
+'FUNCTIONS TO CREATE
+'##################################################################################################################################
 
-'###Function to Create###
-'legend Properties
+'LEGEND
+'##################################################################################################################################
 
+
+'ChartOptions = ChartOptions & Legend
+
+'TITLE
+'##################################################################################################################################
 'title Properties
 
+'SUBTITLE
+'##################################################################################################################################
 'subtitles
 
+'X AXIS
+'##################################################################################################################################
 'axisX
     'stripLines
     'crosshair
     'scaleBreaks
         'customBreaks
+        
+'Y AXIS
+'##################################################################################################################################
 'axisY
     'stripLines
     'crosshair
     'scaleBreaks
         'customBreaks
         
+'X AXIS 2
+'##################################################################################################################################
 'axisX2:
     'stripLines
     'crosshair
     'scaleBreaks
         'customBreaks
         
+'Y AXIS 2
+'##################################################################################################################################
 'axisY2:
     'stripLines
     'crosshair
     'scaleBreaks
         'customBreaks
         
+'TOOTTIP
+'##################################################################################################################################
 'tooltip
 
+'DATA
+'##################################################################################################################################
 'data
 Dim data, chartType As String
+
+
+
+
+
+
+
+
 ChartOptions = ChartOptions & "data: [" & vbNewLine
 
-
-
-
-
+'DATAPOINTS
+'##################################################################################################################################
 For i = 1 To datasetCount
     chartType = chartTypeSets(i)
     
+    'legendEnabled
+    If legendEnabled = "True" Then data = data & "showInLegend: 'true'" & vbNewLine
+    
+    'Name
+    If datasetNameSets(i) <> "" Then data = data & "name: '" & datasetNameSets(i) & "'" & vbNewLine
+    
+    'Chart Type
     data = data & ChartTypesFunction(chartType)
-        'Add DataPoints
-        data = data & "dataPoints: [" & vbNewLine
-            data = data & CreateDatapoints(labelRng:=Range(labelSets(i)), yRng:=Range(yRngSets(i)), aggFunct:=aggFunct, chartType:=chartType)
-
-
-data = data & vbNewLine & "]}," & vbNewLine
-
+    
+    'Add DataPoints
+    data = data & "dataPoints: [" & vbNewLine
+    data = data & CreateDatapoints(labelRng:=Range(labelSets(i)), yRng:=Range(yRngSets(i)), aggFunct:=aggFunct, chartType:=chartType)
+    data = data & vbNewLine & "]}," & vbNewLine
 Next i
+
+
+'CLOSE CHART OPTIONS
+'##################################################################################################################################
 data = data & vbNewLine & "]" & vbNewLine & "});" & vbNewLine & "chart.render();" & vbNewLine
 ChartOptions = ChartOptions & data
+
 End Function
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -666,4 +795,5 @@ End Function
     '        mouseover
     '        MouseMove
     '        mouseout
+
 
