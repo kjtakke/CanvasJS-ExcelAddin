@@ -1,97 +1,118 @@
 Sub testing()
 
 Debug.Print ( _
-    ChartOptions( _
-        "chartContainer2", _
-        chartType_01:="columnChart", _
-        label_01:=Range("A2:A57"), _
-        yRng_01:=Range("C2:C57"), _
-        chartType_02:="lineChart", _
-        label_02:=Range("A2:A57"), _
-        yRng_02:=Range("D2:D57"), _
-        chartType_03:="stackedAreaChart", _
-        label_03:=Range("A2:A57"), _
-        yRng_03:=Range("g2:g57"), _
-        chartType_04:="stackedAreaChart", _
-        label_04:=Range("A2:A57"), _
-        yRng_04:=Range("f2:f57"), _
-        aggFunct:="sum" _
-    ) _
-)
-
+    ChartOptions(StartColumn:=3))
 End Sub
 
 
 
 'Chart Options  variable prefix Chart & ChartOption
-Function ChartOptions( _
-    container As String, Optional Chart_interactivityEnabled As String, Optional Chart_animationDuration As String, _
-    Optional Chart_AnimationEnabled As String, Optional Chart_exportFileName As String, Optional Chart_exportEnabled As String, _
-    Optional Chart_zoomEnabled As String, Optional Chart_zoomType As String, Optional Chart_theme As String, Optional Chart_backgroundColor As String, _
-    Optional Chart_colorSet As String, Optional Chart_width As String, Optional Chart_Height As String, Optional Chart_dataPointMaxWidth As String, _
-    Optional Chart_dataPointMinWidth As String, Optional Chart_dataPointWidth As String, Optional aggFunct As String, _
-    Optional label_01 As Range, Optional label_02 As Range, Optional label_03 As Range, Optional label_04 As Range, Optional label_05 As Range, _
-    Optional yRng_01 As Range, Optional yRng_02 As Range, Optional yRng_03 As Range, Optional yRng_04 As Range, Optional yRng_05 As Range, _
-    Optional xRng_01 As Range, Optional xRng_02 As Range, Optional xRng_03 As Range, Optional xRng_04 As Range, Optional xRng_05 As Range, _
-    Optional name_01 As Range, Optional name_02 As Range, Optional name_03 As Range, Optional name_04 As Range, Optional name_05 As Range, _
-    Optional datasetName_01 As Range, Optional datasetName_02 As Range, Optional datasetName_03 As Range, Optional datasetName_04 As Range, Optional datasetName_05 As Range, _
-    Optional chartType_01 As String, Optional chartType_02 As String, Optional chartType_03 As String, Optional chartType_04 As String, Optional chartType_05 As String, _
-    Optional legendEnabled As String _
-    ) As String
+Function ChartOptions(StartColumn As Integer) As String
 
+Dim StartCell As Integer
+StartCell = 33
 
+Dim container As String
+Dim ChartinteractivityEnabled As String
+Dim ChartanimationDuration As String
+Dim ChartAnimationEnabled As String
+Dim ChartexportFileName As String
+Dim ChartexportEnabled As String
+Dim ChartzoomEnabled As String
+Dim ChartzoomType As String
+Dim Charttheme As String
+Dim ChartbackgroundColor As String
+Dim ChartcolorSet As String
+Dim Chartwidth As String
+Dim ChartHeight As String
+Dim ChartdataPointMaxWidth As String
+Dim ChartdataPointMinWidth As String
+Dim ChartdataPointWidth As String
+Dim aggFunct As String
+Dim label_01 As String
+Dim label_02 As String
+Dim label_03 As String
+Dim label_04 As String
+Dim label_05 As String
+Dim yRng_01 As String
+Dim yRng_02 As String
+Dim yRng_03 As String
+Dim yRng_04 As String
+Dim yRng_05 As String
+Dim xRng_01 As String
+Dim xRng_02 As String
+Dim xRng_03 As String
+Dim xRng_04 As String
+Dim xRng_05 As String
+Dim name_01 As String
+Dim name_02 As String
+Dim name_03 As String
+Dim name_04 As String
+Dim name_05 As String
+Dim datasetName_01 As String
+Dim datasetName_02 As String
+Dim datasetName_03 As String
+Dim datasetName_04 As String
+Dim datasetName_05 As String
+Dim chartType_01 As String
+Dim chartType_02 As String
+Dim chartType_03 As String
+Dim chartType_04 As String
+Dim chartType_05 As String
+Dim legendEnabled As String
 
-'Dim container As String
-'Dim ChartinteractivityEnabled As String
-'Dim ChartanimationDuration As String
-'Dim ChartAnimationEnabled As String
-'Dim ChartexportFileName As String
-'Dim ChartexportEnabled As String
-'Dim ChartzoomEnabled As String
-'Dim ChartzoomType As String
-'Dim Charttheme As String
-'Dim ChartbackgroundColor As String
-'Dim ChartcolorSet As String
-'Dim Chartwidth As String
-'Dim ChartHeight As String
-'Dim ChartdataPointMaxWidth As String
-'Dim ChartdataPointMinWidth As String
-'Dim ChartdataPointWidth As String
-'Dim aggFunct As String
-'Dim label01 As String
-'Dim label02 As String
-'Dim label03 As String
-'Dim label04 As String
-'Dim label05 As String
-'Dim yRng01 As String
-'Dim yRng02 As String
-'Dim yRng03 As String
-'Dim yRng04 As String
-'Dim yRng05 As String
-'Dim xRng01 As String
-'Dim xRng02 As String
-'Dim xRng03 As String
-'Dim xRng04 As String
-'Dim xRng05 As String
-'Dim name01 As String
-'Dim name02 As String
-'Dim name03 As String
-'Dim name04 As String
-'Dim name05 As String
-'Dim datasetName01 As String
-'Dim datasetName02 As String
-'Dim datasetName03 As String
-'Dim datasetName04 As String
-'Dim datasetName05 As String
-'Dim chartType01 As String
-'Dim chartType02 As String
-'Dim chartType03 As String
-'Dim chartType04 As String
-'Dim chartType05 As String
-'Dim legendEnabled As String
+Dim wb As Workbook: Set wb = Workbooks("JS-Engine")
+Dim ws As Worksheet: Set ws = wb.Worksheets("JS_Column")
+Dim rng As Range: Set rng = ws.Range("A1:ZZ1000")
 
-
-
+container = rng.Cells(StartCell + 0, StartColumn).Value
+ChartinteractivityEnabled = rng.Cells(StartCell + 1, StartColumn).Value
+ChartanimationDuration = rng.Cells(StartCell + 2, StartColumn).Value
+ChartAnimationEnabled = rng.Cells(StartCell + 3, StartColumn).Value
+ChartexportFileName = rng.Cells(StartCell + 4, StartColumn).Value
+ChartexportEnabled = rng.Cells(StartCell + 5, StartColumn).Value
+ChartzoomEnabled = rng.Cells(StartCell + 6, StartColumn).Value
+ChartzoomType = rng.Cells(StartCell + 7, StartColumn).Value
+Charttheme = rng.Cells(StartCell + 8, StartColumn).Value
+ChartbackgroundColor = rng.Cells(StartCell + 9, StartColumn).Value
+ChartcolorSet = rng.Cells(StartCell + 10, StartColumn).Value
+Chartwidth = rng.Cells(StartCell + 11, StartColumn).Value
+ChartHeight = rng.Cells(StartCell + 12, StartColumn).Value
+ChartdataPointMaxWidth = rng.Cells(StartCell + 13, StartColumn).Value
+ChartdataPointMinWidth = rng.Cells(StartCell + 14, StartColumn).Value
+ChartdataPointWidth = rng.Cells(StartCell + 15, StartColumn).Value
+aggFunct = rng.Cells(StartCell + 16, StartColumn).Value
+label_01 = rng.Cells(StartCell + 17, StartColumn).Value
+label_02 = rng.Cells(StartCell + 18, StartColumn).Value
+label_03 = rng.Cells(StartCell + 19, StartColumn).Value
+label_04 = rng.Cells(StartCell + 20, StartColumn).Value
+label_05 = rng.Cells(StartCell + 21, StartColumn).Value
+yRng_01 = rng.Cells(StartCell + 22, StartColumn).Value
+yRng_02 = rng.Cells(StartCell + 23, StartColumn).Value
+yRng_03 = rng.Cells(StartCell + 24, StartColumn).Value
+yRng_04 = rng.Cells(StartCell + 25, StartColumn).Value
+yRng_05 = rng.Cells(StartCell + 26, StartColumn).Value
+xRng_01 = rng.Cells(StartCell + 27, StartColumn).Value
+xRng_02 = rng.Cells(StartCell + 28, StartColumn).Value
+xRng_03 = rng.Cells(StartCell + 29, StartColumn).Value
+xRng_04 = rng.Cells(StartCell + 30, StartColumn).Value
+xRng_05 = rng.Cells(StartCell + 31, StartColumn).Value
+name_01 = rng.Cells(StartCell + 32, StartColumn).Value
+name_02 = rng.Cells(StartCell + 33, StartColumn).Value
+name_03 = rng.Cells(StartCell + 34, StartColumn).Value
+name_04 = rng.Cells(StartCell + 35, StartColumn).Value
+name_05 = rng.Cells(StartCell + 36, StartColumn).Value
+datasetName_01 = rng.Cells(StartCell + 37, StartColumn).Value
+datasetName_02 = rng.Cells(StartCell + 38, StartColumn).Value
+datasetName_03 = rng.Cells(StartCell + 39, StartColumn).Value
+datasetName_04 = rng.Cells(StartCell + 40, StartColumn).Value
+datasetName_05 = rng.Cells(StartCell + 41, StartColumn).Value
+chartType_01 = rng.Cells(StartCell + 42, StartColumn).Value
+chartType_02 = rng.Cells(StartCell + 43, StartColumn).Value
+chartType_03 = rng.Cells(StartCell + 44, StartColumn).Value
+chartType_04 = rng.Cells(StartCell + 45, StartColumn).Value
+chartType_05 = rng.Cells(StartCell + 46, StartColumn).Value
+legendEnabled = rng.Cells(StartCell + 47, StartColumn).Value
 
 
 
@@ -106,42 +127,41 @@ On Error Resume Next
 Dim datasetCount As Integer
 datasetCount = 1
 Dim labelSets(1 To 5) As Variant
-labelSets(1) = label_01.Address
-labelSets(2) = label_02.Address
-labelSets(3) = label_03.Address
-labelSets(4) = label_04.Address
-labelSets(5) = label_05.Address
+labelSets(1) = label_01
+labelSets(2) = label_02
+labelSets(3) = label_03
+labelSets(4) = label_04
+labelSets(5) = label_05
 
     'Count number of dataset
     For i = 1 To 5
-        If IsEmpty(labelSets(i)) Then Exit For
+        If labelSets(i) = "" Then Exit For
         datasetCount = datasetCount + 1
     Next
     datasetCount = datasetCount - 1
     
 'Y Series
 Dim yRngSets(1 To 5) As Variant
-yRngSets(1) = yRng_01.Address
-yRngSets(2) = yRng_02.Address
-yRngSets(3) = yRng_03.Address
-yRngSets(4) = yRng_04.Address
-yRngSets(5) = yRng_05.Address
-
+yRngSets(1) = yRng_01
+yRngSets(2) = yRng_02
+yRngSets(3) = yRng_03
+yRngSets(4) = yRng_04
+yRngSets(5) = yRng_05
 'X Series
 Dim xRngSets(1 To 5) As Variant
-xRngSets(1) = xRng_01.Address
-xRngSets(2) = xRng_02.Address
-xRngSets(3) = xRng_03.Address
-xRngSets(4) = xRng_04.Address
-xRngSets(5) = xRng_05.Address
+xRngSets(1) = xRng_01
+xRngSets(2) = xRng_02
+xRngSets(3) = xRng_03
+xRngSets(4) = xRng_04
+xRngSets(5) = xRng_05
 
 'Name Series
 Dim nameSets(1 To 5) As Variant
-nameSets(1) = name_01.Address
-nameSets(2) = name_02.Address
-nameSets(3) = name_03.Address
-nameSets(4) = name_04.Address
-nameSets(5) = name_05.Address
+nameSets(1) = name_01
+nameSets(2) = name_02
+nameSets(3) = name_03
+nameSets(4) = name_04
+nameSets(5) = name_05
 
 'Chart Type Series
 Dim chartTypeSets(1 To 5) As Variant
@@ -284,8 +304,8 @@ ChartOptions = "var chart = new CanvasJS.Chart('" & container & "'," & vbNewLine
 'LEGEND
 '##################################################################################################################################
 
-
-'ChartOptions = ChartOptions & Legend
+'XXXXXX___CHANGE RANGE VARIABLES___XXXXXX
+ChartOptions = ChartOptions & Legend_Proprerty(legendEnabled:="True", StartColumn:=3)
 
 'TITLE
 '##################################################################################################################################
@@ -334,8 +354,13 @@ ChartOptions = "var chart = new CanvasJS.Chart('" & container & "'," & vbNewLine
 'DATA
 '##################################################################################################################################
 'data
-Dim data, chartType As String
-
+Dim data  As String
+Dim chartType As String
+Dim tmpStr As String
+Dim tmpStr2 As String
+Dim lblWB, yRngWB, xRngWB, nameWB As Workbook
+Dim lblWS, yRngWS, xRngWS, nameWS As Workbook
+Dim lblRng, yRngRng, xRngRng, nameRng As Range
 
 
 
@@ -344,25 +369,49 @@ Dim data, chartType As String
 
 
 ChartOptions = ChartOptions & "data: [" & vbNewLine
-
+'i = 1
+'Debug.Print (labelSets(i))
 'DATAPOINTS
 '##################################################################################################################################
 For i = 1 To datasetCount
+    'yRngAdd = yRngSets(i)
+    'lblAdd = labelSets(i)
     chartType = chartTypeSets(i)
+    
+    On Error Resume Next
+    tmpStr = labelSets(i)
+    Set lblWB = Workbooks(WB_Add(tmpStr))
+    Set lblWS = Sheets(Sheet_Add(tmpStr))
+    Set lblRng = lblWS.Range(Rng_Add(tmpStr))
+
+    tmpStr2 = yRngSets(i)
+    Set yRngWB = Workbooks(WB_Add(tmpStr2))
+    Set yRngWS = Sheets(Sheet_Add(tmpStr2))
+    Set yRngRng = yRngWS.Range(Rng_Add(tmpStr2))
+    On Error GoTo 0
     
     'legendEnabled
     If legendEnabled = "True" Then data = data & "showInLegend: 'true'" & vbNewLine
-    
+
     'Name
     If datasetNameSets(i) <> "" Then data = data & "name: '" & datasetNameSets(i) & "'" & vbNewLine
-    
+
     'Chart Type
     data = data & ChartTypesFunction(chartType)
-    
+
     'Add DataPoints
     data = data & "dataPoints: [" & vbNewLine
-    data = data & CreateDatapoints(labelRng:=Range(labelSets(i)), yRng:=Range(yRngSets(i)), aggFunct:=aggFunct, chartType:=chartType)
+        data = data & CreateDatapoints( _
+                                        labelRng:=lblWS.Range(Rng_Add(tmpStr)), _
+                                        labelWB:=Workbooks(WB_Add(tmpStr)), _
+                                        yRng:=yRngWS.Range(Rng_Add(tmpStr2)), _
+                                        yWB:=Workbooks(WB_Add(tmpStr2)), _
+                                        chartType:=chartType, _
+                                        aggFunct:=aggFunct)
+
     data = data & vbNewLine & "]}," & vbNewLine
+    
+    'Debug.Print (data)
 Next i
 
 
@@ -372,11 +421,30 @@ data = data & vbNewLine & "]" & vbNewLine & "});" & vbNewLine & "chart.render();
 ChartOptions = ChartOptions & data
 
 End Function
+'yRngSets(i)
+'Z = Workbook(WB_Add(yRngSets(i))).Worksheet(Sheet_Add(yRngSets(i))).Range(Rng_Add(yRngSets(i)))
+'Workbook(WB_Add(labelSets(i))).Worksheet(Sheet_Add(labelSets(i))).Range(Rng_Add(labelSets(i)))
+
+Function WB_Add(add As String) As String
+    Dim fnd2, add_len As Integer
+    fnd2 = Application.WorksheetFunction.Find("]", add, 1)
+    WB_Add = Mid(add, 2, fnd2 - 2)
+End Function
 
 
+Function Sheet_Add(add As String) As String
+    Dim fnd, fnd2, add_len As Integer
+    fnd = Application.WorksheetFunction.Find("!", add, 1)
+    fnd2 = Application.WorksheetFunction.Find("]", add, 1)
+    Sheet_Add = Mid(add, fnd2 + 1, fnd - fnd2 - 1)
+End Function
 
-
-
+Function Rng_Add(add As String) As String
+    Dim fnd, fnd2, add_len As Integer
+    fnd = Application.WorksheetFunction.Find("!", add, 1)
+    fnd2 = Application.WorksheetFunction.Find("]", add, 1)
+    Rng_Add = Right(add, fnd - fnd2 - 1)
+End Function
 
 
 
