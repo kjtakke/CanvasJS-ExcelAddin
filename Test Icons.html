@@ -92,44 +92,40 @@ body {
 				<form id="formUserInput" action="/action_page.php">
 					<b>Icon Code:</b>
 					<input class="form-control" type="text" style="width: 300px;" value="fab fa-accessible-icon" id="iconCode" name="fname">
-					<b>Colour:</b>
-					<input class="form-control" type="text" style="width: 150px;" value="#000" id="iconColor" name="fname">
+					<b>Colour: (Prefix with a '#' in your HTML Document)</b>
+					<input oninput="updateChoice()" class="jscolor form-control" type="text" style="width: 150px;" value="#C29130" id="iconColor" name="fname">
 					<b>Size:</b>
-					<input class="form-control" type="text" style="width: 100px;" value="100" id="iconSize" name="fname">
+					<input oninput="updateChoice()" class="form-control" type="text" style="width: 100px;" value="100" id="iconSize" name="fname">
 					<b>Background Colour:</b>
-					<input class="form-control" type="text" style="width: 150px;" name="fname">
+					<input class="jscolor form-control" value="333355" type="text" style="width: 150px;" name="fname">
 					<b>Text:</b>
-					<input class="form-control" type="text" style="width: 300px;" name="fname">
+					<input oninput="updateChoice()" value=" My Text" class="form-control" type="text" style="width: 300px;" name="fname">
 					<b>Background Image URL: (  https://objective/id:BQ1234567  )</b>
 					<input class="form-control" type="text" style="width: 100%;" name="bgIMG">
-
-
 				</form>
 			</div>
 		</div>
 	
 
-	<div id="iconContainer" style="border:rgb(80, 80, 80) solid 1px; border-radius: 12px;">
+	<div id="iconContainer" style="border:rgb(80, 80, 80) solid 1px; border-radius: 12px; background-color: #333355;">
 		<div class="container" style="text-align: left;">
-			<br><br><br><br>
-			<i style="color:#000; font-size: 100px;" class="fab fa-accessible-icon" id="iconDisplay"></i>
-			<h1 id="textID"></h1>
+			<br><br><br><br> 	
+			<i style="color:#C29130; font-size: 100px; vertical-align: middle;" class="fab fa-accessible-icon" id="iconDisplay"> My Text</i>
 		</div>
 	</div>
 
 
 
 	<script src="https://kit.fontawesome.com/1ea5674c96.js" crossorigin="anonymous"></script>
-
+	<script src="jscolor.js"></script>
 	<script>
 		function updateChoice() {
 			document.getElementById("iconDisplay").className = document.getElementById("formUserInput").elements[0].value;
-			document.getElementById("iconDisplay").style.color = document.getElementById("formUserInput").elements[1].value;
+			document.getElementById("iconDisplay").style.color = "#" + document.getElementById("formUserInput").elements[1].value;
 			document.getElementById("iconDisplay").style.fontSize = document.getElementById("formUserInput").elements[2].value + "px";
-			document.getElementById("iconContainer").style.backgroundColor = document.getElementById("formUserInput").elements[3].value;
+			document.getElementById("iconContainer").style.backgroundColor = "#" + document.getElementById("formUserInput").elements[3].value;
 			document.getElementById("iconDisplay").innerHTML = document.getElementById("formUserInput").elements[4].value;
 			document.body.style.backgroundImage = "url('" + document.getElementById("formUserInput").elements[5].value + "')";
-			//alert("url('" + document.getElementById("formUserInput").elements[5].value + "')");
 		}
 		
 
