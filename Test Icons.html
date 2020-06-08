@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<style>
+body {
+  padding: 20px;
+  font-family: Helvetica;
+  background-image: url("");
+  background-repeat: no-repeat, repeat;
+  background-size: cover; 
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 0px;
+
+}
+
+.box {
+  background-color: #20262e;
+  color: #fff;
+  border-radius: none;
+  border-style: solid;
+  border-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 2px;
+  font-size: 14px;
+  margin-bottom: 5px;
+
+}
+
+.box:hover {
+  background-color: crimson;
+}
+
+.btn1 {
+  background-color: #20262e;
+  color: #fff;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
+  width: 15%;
+  border-color: black;
+}
+
+.btn1:hover {
+  border-color: darkgray;
+  background-color: crimson;
+}
+
+
+
+	</style>
+</head>
+
+<body>
+	<div style="grid-template-columns: repeat(auto-fit, minmax(50%, 50%)); " class="wrapper" id="box2">
+		<div class="container">
+			<h1>Web Develement Sandpit</h1>
+		</div>
+	</div>
+	<div style="grid-template-columns: repeat(auto-fit, minmax(50%, 50%)); " class="wrapper" id="box2">
+		<div class="container">
+			<button class="btn btn-primary" onclick=" window.open('https://fontawesome.com/icons?d=gallery&m=free','_blank')"> 
+				Find Your Icons
+			</button>
+			<button class="btn btn-primary" onclick=" window.open('https://objective/id:fBQ1234567','_blank')"> 
+				Background Images
+			</button>
+			<button class="btn btn-primary" onclick=" window.open('https://www.google.com/search?sxsrf=ALeKk02kasd04UMaHMrrLphj9BctvxcHng%3A1591612113031&source=hp&ei=0BLeXvO5PNPUz7sP8bCYoAM&q=color+picker&oq=color&gs_lcp=CgZwc3ktYWIQAxgAMgQIIxAnMgUIABCxAzIFCAAQsQMyBQgAELEDMgUIABCxAzIFCAAQsQMyBQgAELEDMgIIADICCAAyBQgAELEDOgUIABCRAjoFCAAQgwFQ8AdY4w1g7hRoAHAAeACAAcMBiAH-BpIBAzAuNZgBAKABAaoBB2d3cy13aXo&sclient=psy-ab','_blank')"> 
+				Color Picker
+			</button>
+			<br>	
+			<button style="margin-top: 5px;" class="btn btn-danger" onclick=" window.open('https://objective/id:fBQ1234567','_blank')"> 
+				Web Framwork IDE
+			</button>
+			<button style="margin-top: 5px;"  class="btn btn-success" id="btnUpdate" onclick="updateChoice()"> 
+				Update Page
+			</button>
+			<button style="margin-top: 5px;"  class="btn btn-warning" onclick="location.reload();"> 
+				Reset Page
+			</button>
+			
+			<br>
+			<div class="form-group">	
+				<form id="formUserInput" action="/action_page.php">
+					<b>Icon Code:</b>
+					<input class="form-control" type="text" style="width: 300px;" value="fab fa-accessible-icon" id="iconCode" name="fname">
+					<b>Colour:</b>
+					<input class="form-control" type="text" style="width: 150px;" value="#000" id="iconColor" name="fname">
+					<b>Size:</b>
+					<input class="form-control" type="text" style="width: 100px;" value="100" id="iconSize" name="fname">
+					<b>Background Colour:</b>
+					<input class="form-control" type="text" style="width: 150px;" name="fname">
+					<b>Text:</b>
+					<input class="form-control" type="text" style="width: 300px;" name="fname">
+					<b>Background Image URL: (  https://objective/id:BQ1234567  )</b>
+					<input class="form-control" type="text" style="width: 100%;" name="bgIMG">
+
+
+				</form>
+			</div>
+		</div>
+	
+
+	<div id="iconContainer" style="border:rgb(80, 80, 80) solid 1px; border-radius: 12px;">
+		<div class="container" style="text-align: left;">
+			<br><br><br><br>
+			<i style="color:#000; font-size: 100px;" class="fab fa-accessible-icon" id="iconDisplay"></i>
+			<h1 id="textID"></h1>
+		</div>
+	</div>
+
+
+
+	<script src="https://kit.fontawesome.com/1ea5674c96.js" crossorigin="anonymous"></script>
+
+	<script>
+		function updateChoice() {
+			document.getElementById("iconDisplay").className = document.getElementById("formUserInput").elements[0].value;
+			document.getElementById("iconDisplay").style.color = document.getElementById("formUserInput").elements[1].value;
+			document.getElementById("iconDisplay").style.fontSize = document.getElementById("formUserInput").elements[2].value + "px";
+			document.getElementById("iconContainer").style.backgroundColor = document.getElementById("formUserInput").elements[3].value;
+			document.getElementById("iconDisplay").innerHTML = document.getElementById("formUserInput").elements[4].value;
+			document.body.style.backgroundImage = "url('" + document.getElementById("formUserInput").elements[5].value + "')";
+			//alert("url('" + document.getElementById("formUserInput").elements[5].value + "')");
+		}
+		
+
+		//  	/home/takken/Pictures/The Last Of Us 2.jpg
+		// 
+	</script>
+
+</body>
+
+</html>
