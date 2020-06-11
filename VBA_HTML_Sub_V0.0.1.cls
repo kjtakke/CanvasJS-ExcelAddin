@@ -6,8 +6,8 @@ Dim WebPage As String
 Dim Styles As String
 Dim Scripts As String
 
-Styles = "body {background-color: lightblue;}h1 {color: white;text-align: center;}p {font-family: verdana;font-size: 20px;}"
-Scripts = "function toCelsius(fahrenheit) {return (5 / 9) * (fahrenheit - 32);}"
+Styles = "<style>body {background-color: lightblue;}h1 {color: white;text-align: center;}p {font-family: verdana;font-size: 20px;}</style>"
+Scripts = "<script>function toCelsius(fahrenheit) {return (5 / 9) * (fahrenheit - 32);}</script>"
 
 
 WebPage = HTML_INIT( _
@@ -100,7 +100,7 @@ Function StyleSheetLink( _
                 Optional HREF15 As String _
                 ) As String
                 
-    StyleSheetLink = "<link rel='stylesheet' href='" & HREF1 & " > " & vbNewLine
+    StyleSheetLink = "<link rel='stylesheet' href='" & HREF1 & "' > " & vbNewLine
     If HREF2 <> "" Then StyleSheetLink = StyleSheetLink & "<link rel='stylesheet' href='" & HREF2 & " > " & vbNewLine
     If HREF3 <> "" Then StyleSheetLink = StyleSheetLink & "<link rel='stylesheet' href='" & HREF3 & " > " & vbNewLine
     If HREF4 <> "" Then StyleSheetLink = StyleSheetLink & "<link rel='stylesheet' href='" & HREF4 & " > " & vbNewLine
