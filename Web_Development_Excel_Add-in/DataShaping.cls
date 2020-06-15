@@ -202,7 +202,7 @@ For i = 1 To UBound(unique)
     For j = 1 To UBound(values)
         If index(j, 1) = unique(i, 1) Then
             avg(1) = avg(1) + 1
-            avg(2) = avg(2) + values(j, 1)
+            If agg <> "count" Then avg(2) = avg(2) + values(j, 1)
         End If
     Next j
     Select Case True
@@ -215,7 +215,13 @@ For i = 1 To UBound(unique)
     End Select
 Next i
 
+
+
 'return
 mergeTwoArrays = unique
 End Function
+
+
+
+
 
