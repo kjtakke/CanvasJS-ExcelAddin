@@ -125,3 +125,36 @@ Function boxChart(srtAry As Variant) As Variant
     boxChart_temp(2) = boxChart_temp(1) * 2
     boxChart = boxChart_temp
 End Function
+
+
+Function AryFromCell(WS As String, index As String, Optional values As String) As Variant
+
+Dim tmpAry, rngAry As Variant
+Dim H As Long
+Dim rng As Range
+Dim cAdd1, cAdd2 As String
+
+If values = "" Then
+
+AryFromCell = Worksheets(WS).Range(index, Worksheets(WS).Range(index).End(xlDown)).Value
+
+Else
+
+Set rng = Range(values)
+
+cAdd1 = rng.Row & "," & rng.Column
+
+rngAry = Split(cAdd1, ",")
+
+tmpAry = Worksheets(WS).Range(index, Worksheets(WS).Range(index).End(xlDown)).Value
+
+H = rngAry(0) + UBound(tmpAry)
+
+cAdd2 = H & ", " & rngAry(1)
+
+AryFromCell = Worksheets(WS).Range(Cells.Rows(Int(rngAry(0))).Columns(Int(rngAry(1))), _
+                     Cells.Rows(Int(rngAry(0)) + UBound(tmpAry) - 1).Columns(Int(rngAry(1)))).Value
+
+End If
+End Function
+
