@@ -159,6 +159,7 @@ End If
 End Function
 
 
+
 Function mergeTwoArrays(agg As String, index As Variant, values As Variant) As Variant
 
 Dim ary1, ary2, unique As Variant
@@ -222,6 +223,40 @@ mergeTwoArrays = unique
 End Function
 
 
+Function BubbleDataPoints(ary As Variant) As String
+
+BubbleDataPoints = ""
+
+For i = 1 To UBound(ary)
+
+    BubbleDataPoints = BubbleDataPoints & "{  name: '" & ary(i, 1) & "' x: " & ary(i, 2) & " y: " & ary(i, 3) & " z: " & ary(i, 4) & " }," & vbNewLine
+
+Next i
+
+End Function
 
 
+Function TwoDataPointsNumber(ary As Variant) As String
 
+TwoDataPointsNumber = ""
+
+For i = 1 To UBound(ary)
+
+    TwoDataPointsNumber = TwoDataPointsNumber & "{ label: " & ary(i, 1) & " y: " & ary(i, 2) & " }," & vbNewLine
+
+Next i
+
+End Function
+
+
+Function TwoDataPointsText(ary As Variant) As String
+
+TwoDataPointsText = ""
+
+For i = 1 To UBound(ary)
+
+    TwoDataPointsText = TwoDataPointsText & "{ label: '" & ary(i, 1) & "' y: " & ary(i, 2) & " }," & vbNewLine
+
+Next i
+
+End Function
