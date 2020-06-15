@@ -158,3 +158,64 @@ AryFromCell = Worksheets(WS).Range(Cells.Rows(Int(rngAry(0))).Columns(Int(rngAry
 End If
 End Function
 
+
+Function mergeTwoArrays(agg As String, index As Variant, values As Variant) As Variant
+
+Dim ary1, ary2, unique As Variant
+Dim c As Long
+Dim avg As Variant
+Dim isSame As Boolean
+ReDim unique(1 To UBound(index))
+
+
+'Unique value set
+unique(1) = index(1, 1)
+c = 1
+
+For i = 2 To UBound(index)
+    isSame = False
+    
+    For j = 1 To UBound(unique)
+        If unique(j) = index(i, 1) Then isSame = True
+    Next j
+    
+    If isSame = False Then
+    c = c + 1
+    unique(c) = index(i, 1)
+    End If
+Next i
+
+ReDim ary2(1 To c, 1 To 2)
+For i = 1 To UBound(ary2)
+ary2(i, 1) = unique(i)
+Next i
+
+ReDim unique(1 To c, 1 To 2)
+unique = ary2
+ary2 = Empty
+
+'Aggregation
+For i = 1 To UBound(unique)
+    ReDim avg(1 To 2)
+    avg(1) = 0
+    avg(2) = 0
+    For j = 1 To UBound(values)
+        If index(j, 1) = unique(i, 1) Then
+            avg(1) = avg(1) + 1
+            avg(2) = avg(2) + values(j, 1)
+        End If
+    Next j
+    Select Case True
+        Case agg = "sum"
+            unique(i, 2) = avg(2)
+        Case agg = "average"
+            unique(i, 2) = Round(avg(2) / avg(1), 0)
+        Case agg = "count"
+            unique(i, 2) = avg(1)
+    End Select
+Next i
+
+'return
+mergeTwoArrays = unique
+End Function
+
