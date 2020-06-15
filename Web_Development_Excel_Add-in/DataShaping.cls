@@ -158,6 +158,21 @@ AryFromCell = Worksheets(WS).Range(Cells.Rows(Int(rngAry(0))).Columns(Int(rngAry
 End If
 End Function
 
+Function TwoArraysToOneDataSet(ary1 As Variant, ary2 As Variant) As Variant
+
+Dim ary As Variant
+ReDim ary(1 To UBound(ary1), 1 To 2)
+
+For i = 1 To UBound(ary1)
+
+ary(i, 1) = ary1(i, 1)
+ary(i, 2) = ary2(i, 1)
+
+Next i
+
+TwoArraysToOneDataSet = ary
+
+End Function
 
 
 Function mergeTwoArrays(agg As String, index As Variant, values As Variant) As Variant
@@ -273,3 +288,15 @@ For i = 1 To UBound(ary)
 Next i
 
 End Function
+
+
+Function RangePoints(ary As Variant) As String
+
+RangePoints = ""
+
+For i = 1 To UBound(ary)
+    RangePoints = RangePoints & "{ x: " & i * 10 & ", y:[" & ary(i, 2) & ", " & ary(i, 3) & "], label: '" & ary(i, 1) & "'}," & vbNewLine
+Next i
+
+End Function
+
