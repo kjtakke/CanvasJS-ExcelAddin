@@ -260,3 +260,16 @@ For i = 1 To UBound(ary)
 Next i
 
 End Function
+
+
+Function BoxDataPoints(ary As Variant) As String
+
+BoxDataPoints = ""
+
+For i = 1 To UBound(ary)
+
+    BoxDataPoints = BoxDataPoints & "{ label: '" & ary(i, 1) & "' y: " & ary(i, 2) & ", " & ary(i, 3) & ", " & ary(i, 4) & ", " & ary(i, 5) & ", " & ary(i, 6) & " }," & vbNewLine
+
+Next i
+
+End Function
