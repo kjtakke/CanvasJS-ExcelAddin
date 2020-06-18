@@ -1,4 +1,3 @@
-https://raw.githubusercontent.com/kjtakke/CanvasJS-ExcelAddin/master/Web_Development_Excel_Add-in/Scripts/Bootstrap.min.css
 https://raw.githubusercontent.com/kjtakke/CanvasJS-ExcelAddin/master/Web_Development_Excel_Add-in/Scripts/CanvasJS.min.jss
 https://raw.githubusercontent.com/kjtakke/CanvasJS-ExcelAddin/master/Web_Development_Excel_Add-in/Scripts/bootstrap.min.js
 https://raw.githubusercontent.com/kjtakke/CanvasJS-ExcelAddin/master/Web_Development_Excel_Add-in/Scripts/canvasjs.react.js
