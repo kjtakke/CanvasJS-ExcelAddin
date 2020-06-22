@@ -1,0 +1,31 @@
+https://bettersolutions.com/vba/ribbon/face-ids-2003.htm
+
+Site Development (XLWD)
+3044 New
+9161 Open
+9115 Edit
+3104 Save 
+1713 Save As
+7424 Deploy Pages
+3535 Developer Notes
+9326 Error Logs
+22 Copy Code
+
+Simple Pages 
+800 Single Table    (XLSTD)
+45 Singe Chart      (XLSCD)
+641 Chart and Table (XLCTD)
+6578 Single Image   (XLSID)
+6185 Image Slider   (XLISD)
+
+Other Pages 
+9035 Profile        (XLPD)
+9196 Resume         (XLRD)
+4174 Business       (XLBD)
+6824 Article        (XLAD)
+
+Help
+9987 Resources
+984 Help
+9325 Documentation 
+9456 Demo   
