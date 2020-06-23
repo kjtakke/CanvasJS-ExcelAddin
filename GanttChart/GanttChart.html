@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>jQuery.Gantt</title>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=IE8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./jQuery.Gantt_files/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="./jQuery.Gantt_files/style.css" type="text/css" rel="stylesheet">
+        <link href="./jQuery.Gantt_files/prettify.min.css" rel="stylesheet" type="text/css">
+        
+    </head>
+    <body>
+
+        <div class="container"><div class="gantt"></div></div>
+
+    <script src="./jQuery.Gantt_files/jquery.min.js"></script>
+    <script src="./jQuery.Gantt_files/jquery.cookie.min.js"></script>
+    <script src="./jQuery.Gantt_files/jquery.fn.gantt.js"></script>
+    <script src="./jQuery.Gantt_files/bootstrap.min.js"></script>
+    <script src="./jQuery.Gantt_files/prettify.min.js"></script>
+
+
+
+    <script>
+        $(function() {
+            "use strict";
+
+            var demoSource = [{
+                name: "Sales",
+                desc: "Phase 1",
+                values: [{                  
+                    from: 1585699200000, //1 day = 86400000, 1 hrs = 3600000, 1 min = 60000
+                    to:   1588636800000,
+                    label: "Book Sale",
+                    customClass: "ganttBlue"
+                }]
+            },{
+                name: "",
+                desc: "Phase 2",
+                values: [{
+                    from: 1587772800000,
+                    to: 1589500800000,
+                    label: "Stocktake",
+                    customClass: "ganttRed"
+                }]
+            },{
+                name: "Purchasing",
+                desc: "Phase 1",
+                values: [{
+                    from: 1588291200000,
+                    to: 1590969600000,
+                    label: "Quote New Books",
+                    customClass: "ganttOrange",
+                }]
+            }];
+
+            // shifts dates closer to Date.now()
+            var offset = new Date().setHours(0, 0, 0, 0) -
+                new Date(demoSource[0].values[0].from).setDate(35);
+            for (var i = 0, len = demoSource.length, value; i < len; i++) {
+                value = demoSource[i].values[0];
+                value.from += offset;
+                value.to += offset;
+            }
+
+            $(".gantt").gantt({
+                source: demoSource,
+                navigate: "scroll",
+                scale: "days",
+                maxScale: "months",
+                minScale: "hours",
+                itemsPerPage: 10,
+                scrollToToday: false,
+                useCookie: true,
+                /*onItemClick: function(data) {
+                    alert("Item clicked - show some details");
+                },
+                onAddClick: function(dt, rowId) {
+                    alert("Empty space clicked - add an item!");
+                },*/
+                onRender: function() {
+                    if (window.console && typeof console.log === "function") {
+                        console.log("chart rendered");
+                    }
+                }
+            });
+
+            $(".gantt").popover({
+                selector: ".bar",
+                title: function _getItemText() {
+                    return this.textContent;
+                },
+                container: '.gantt',
+                //content: "Here's some useful information.",
+                trigger: "hover",
+                placement: "auto right"
+            });
+
+            prettyPrint();
+
+        });
+    </script>
+
+    
+
+</body></html>
