@@ -1,0 +1,40 @@
+<html>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+/* Tested with WSS3,IE9,FF19 */
+
+$(document).ready( function() {
+
+    var siteUrl = "//london",
+        listId  = "{1EC2EC89-B3DC-434D-A63E-AAEBF72E4E89}";
+
+$.get( siteUrl + "/_vti_bin/owssvr.dll?Cmd=Display&XMLDATA=TRUE&List=" + listId, 
+    function( xml ) {
+        var zrow = xml.getElementsByTagName("z:row");
+        for(var i=0; i<zrow.length; i++) {
+            $("#table1 tbody").append( 
+            "<tr><td>"
+            + zrow[i].getAttribute("ows_Attachments")
+            + "</td><td>"
+            + zrow[i].getAttribute("ows_LinkTitle") 
+            + "</td><td>" 
+            + zrow[i].getAttribute("ows_Body") 
+            + "</td></tr>" 
+            );
+        }
+});
+});
+
+</script>
+
+<table id="table1">
+<caption>Announcements</caption>
+<tbody></tbody>
+</table>
+
+</body>
+</html>
