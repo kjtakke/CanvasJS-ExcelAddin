@@ -1,14 +1,20 @@
-'Decorations#########################################################################################################################################################
+'Decorations##########################################################################################################################################################
 
 'Saved File Location
 Public myfile As String
+
+'Webpage Text
+Public HTML As String
+Public HTMLPageData As String
+Public HTMLRowData As String
+Public HTMLColumnData As String
 
 'Public Arrays
 Public WDdata As Variant            'Website Data Aarray
 Public ColumnText As Variant        'Column Text Field
 Public JavaScriptText As Variant    'JavaScript Field
 
-'Denominators
+'Deliminators
 Public MD As String
 Public PP As String
 Public PD As String
@@ -19,7 +25,7 @@ Public CD As String
 Public TD As String
 Public JD As String
 
-'Array Dimensions
+'Array Dimentions
 Public AD1 As Integer
 Public AD2 As Integer
 Public AD3 As Integer
@@ -90,16 +96,16 @@ Public XLWD As String
 
 
 'Spare Delimiters https://passwordsgenerator.net/
-'7,}fu?[K3b;Cnc:(=&-?')9dzr!?$C35}B2&dZSQF-QW9/q\~+':yBVA86R3D7E*U!2bX^(CxdB#kM>K7m>v6gj6p&([F=jjgt3bJ6D&7zF)>&L!xMhaQq:2CF$qM$>
-'n&:>}spv2k;jP)XjyAMF5V.W[Ds'K~awWTZRHP3gX7Y5pj3~5K,=)*d6_ENaz-Q:x5A^zm4~DkR`$;!DKP<^v=39}Q96.GJ,H5&)u'g)<<[\br3DAJ!W/-duuk?h;sfU
-'AT)e7E\3tq4.CxY27/#pBkjR8hsQ@+b2f^2v9u4]@V~ew/9GKTwTVA(=A*K:Tf7f\eMy\Z~f-*=}SQzuBq(->k#HzQ#:qj3'C`Tge)Vxa@N4ErQV!M,*zHJ,jUWav@eH
-'S>FT\'hPU#;E*g7[}Jb?D$WnK7XtG{tH[sQ<(Dsh~xK&w@R3!=^pN\2vzU?kXC\6%^R#R~n}n`Qzc~7E-uJ-77pJw9&4v:*,SHB,PL[B!(cx\b8^RS;/S<zA-EeqQcM.
-'9AxZ*)kYTARH+Ttu#HF%SQ!,9{Z4sa-@[F~J[c:P;tXu6L&G5G^LQ`Hj>/ESP[Bc;M26z2V4N<6Zz5/Bbk6pRz'.zCh'rAA:)j@j~j75bK9z%n:kzK237=N~wPCYkVQc
-'U%ATa?kA^)\x^G=?(HdD!k??mBSJ?A%qn}3_&^:{$ck\Y>ck%Zcj<^9k96PSx>wCZD7y'.d=K[A5CwxEpmuRt3Gqj/NDUwgv9}r;+g6G&c\=!Q'r?4q+Y3KEvz^S?eQ<
-'xJa<z6+[/p%X8^Qm\N,+y2`5d+{}N\u/[+Y!zvgb]6-,aa~!^$`pa%J/)4nj["vxM}:"_4H<[DCGWwCEHnJnZzG7='5rU`:?<xY]w/Py!Fyjy%C6RSEb~?xhT6ZQXRe_
-'T2@A/}YfBNz[(_x}\Feku+F~Qf%gFcWH%**u=,NE$*z?\uHSuUZYe)-k?znm\9A]Rv5GJMFQJj?f$DaHtAM9#DvLaLfx',"Jz~Wt^9skUqM&x#Uy)6{RP$3"x-y5`K7d
-'acp&]'E2WcWEdxpg8U]gxbx5GTa#<~<6W+k'Z{=Sk?h#/=-](x8^\,eH*`&AEtMHN7bbN/P\u_9"cL#um.C3xTkCx]KHBaddA{Yh&Fu{>3T8Rh9x`/!=%s9uUfz@P\yt
-'~CZQ[Y3/fqHx,(({#aPC]+S.w42MQedqQc4]QJFbB&A6'TJ"Dmm#N=aX7A73"bENt$!2!Z+Bq{*3%eA6%Sa~suEc>6x+9U^NVn>CwhJ~^UJ):S{P@563j^UUv,2Te+bN
+    '7,}fu?[K3b;Cnc:(=&-?')9dzr!?$C35}B2&dZSQF-QW9/q\~+':yBVA86R3D7E*U!2bX^(CxdB#kM>K7m>v6gj6p&([F=jjgt3bJ6D&7zF)>&L!xMhaQq:2CF$qM$>
+    'n&:>}spv2k;jP)XjyAMF5V.W[Ds'K~awWTZRHP3gX7Y5pj3~5K,=)*d6_ENaz-Q:x5A^zm4~DkR`$;!DKP<^v=39}Q96.GJ,H5&)u'g)<<[\br3DAJ!W/-duuk?h;sfU
+    'AT)e7E\3tq4.CxY27/#pBkjR8hsQ@+b2f^2v9u4]@V~ew/9GKTwTVA(=A*K:Tf7f\eMy\Z~f-*=}SQzuBq(->k#HzQ#:qj3'C`Tge)Vxa@N4ErQV!M,*zHJ,jUWav@eH
+    'S>FT\'hPU#;E*g7[}Jb?D$WnK7XtG{tH[sQ<(Dsh~xK&w@R3!=^pN\2vzU?kXC\6%^R#R~n}n`Qzc~7E-uJ-77pJw9&4v:*,SHB,PL[B!(cx\b8^RS;/S<zA-EeqQcM.
+    '9AxZ*)kYTARH+Ttu#HF%SQ!,9{Z4sa-@[F~J[c:P;tXu6L&G5G^LQ`Hj>/ESP[Bc;M26z2V4N<6Zz5/Bbk6pRz'.zCh'rAA:)j@j~j75bK9z%n:kzK237=N~wPCYkVQc
+    'U%ATa?kA^)\x^G=?(HdD!k??mBSJ?A%qn}3_&^:{$ck\Y>ck%Zcj<^9k96PSx>wCZD7y'.d=K[A5CwxEpmuRt3Gqj/NDUwgv9}r;+g6G&c\=!Q'r?4q+Y3KEvz^S?eQ<
+    'xJa<z6+[/p%X8^Qm\N,+y2`5d+{}N\u/[+Y!zvgb]6-,aa~!^$`pa%J/)4nj["vxM}:"_4H<[DCGWwCEHnJnZzG7='5rU`:?<xY]w/Py!Fyjy%C6RSEb~?xhT6ZQXRe_
+    'T2@A/}YfBNz[(_x}\Feku+F~Qf%gFcWH%**u=,NE$*z?\uHSuUZYe)-k?znm\9A]Rv5GJMFQJj?f$DaHtAM9#DvLaLfx',"Jz~Wt^9skUqM&x#Uy)6{RP$3"x-y5`K7d
+    'acp&]'E2WcWEdxpg8U]gxbx5GTa#<~<6W+k'Z{=Sk?h#/=-](x8^\,eH*`&AEtMHN7bbN/P\u_9"cL#um.C3xTkCx]KHBaddA{Yh&Fu{>3T8Rh9x`/!=%s9uUfz@P\yt
+    '~CZQ[Y3/fqHx,(({#aPC]+S.w42MQedqQc4]QJFbB&A6'TJ"Dmm#N=aX7A73"bENt$!2!Z+Bq{*3%eA6%Sa~suEc>6x+9U^NVn>CwhJ~^UJ):S{P@563j^UUv,2Te+bN
 
 'Open/Activate/Initiate###############################################################################################################################################
 Private Sub UserForm_Activate()
@@ -117,12 +123,13 @@ Private Sub UserForm_Initialize()
       
     GetFile = MsgBox("Load Existing XLWD File" & vbNewLine & "(Excel Web Development File)?", vbYesNo, "New or Load")
     If GetFile = 6 Then
+    
         'Get File
         Dim textline As String
         On Error GoTo en:
         myfile = Application.GetOpenFilename(FileFilter:="XLWD File (*.xlwd), *.xlwd")
         Open myfile For Input As #1
-        
+        Application.Wait (Now + TimeValue("0:00:05"))
         Do Until EOF(1)
             Line Input #1, textline
             XLWD = XLWD & textline
@@ -131,10 +138,16 @@ Private Sub UserForm_Initialize()
         Call SplitWDDataArray
         Call LoadWDDataArrayToForm
     End If
+    
     'Formatting Adjustments
 en:
     Call ColumnTypeOptions
     Call ListBoxesLoad
+End Sub
+
+Private Sub WDCreate_Click()
+Call LoadWDDataToArray
+Call WriteHTMLDocument
 End Sub
 
 'Buttons##############################################################################################################################################################
@@ -211,50 +224,75 @@ End Sub
 'Change_Page/Row/Column###############################################################################################################################################
 'Page
 Private Sub WDSelectPage_SpinDown()
-If Me.WDPage = 1 Then Exit Sub
-Call LoadWDDataToArray
-Me.WDPage = Me.WDPage - 1
-Call LoadWDDataArrayToForm
+    If Me.WDPage = 1 Then Exit Sub
+    Call LoadWDDataToArray
+    Me.WDPage = Me.WDPage - 1
+    Me.WDRow = 1
+    Me.WDColumn = 1
+    Call LoadWDDataArrayToForm
+    Call ChoiceFieldsBlank
 End Sub
 
 Private Sub WDSelectPage_SpinUp()
-If Me.WDPage = 100 Then Exit Sub
-Call LoadWDDataToArray
-Me.WDPage = Me.WDPage + 1
-Call LoadWDDataArrayToForm
+    If Me.WDPage = AD1 Then Exit Sub
+    Call LoadWDDataToArray
+    Me.WDPage = Me.WDPage + 1
+    Me.WDRow = 1
+    Me.WDColumn = 1
+    Call LoadWDDataArrayToForm
+    Call ChoiceFieldsBlank
 End Sub
 
 'Row
 Private Sub WDSelectRow_SpinDown()
-If Me.WDRow = 1 Then Exit Sub
-Call LoadWDDataToArray
-Me.WDRow = Me.WDRow - 1
-Call LoadWDDataArrayToForm
+    If Me.WDRow = 1 Then Exit Sub
+    Call LoadWDDataToArray
+    Me.WDRow = Me.WDRow - 1
+    Me.WDColumn = 1
+    Call LoadWDDataArrayToForm
+    Call ChoiceFieldsBlank
 End Sub
 
 Private Sub WDSelectRow_SpinUp()
-If Me.WDRow = 100 Then Exit Sub
-Call LoadWDDataToArray
-Me.WDRow = Me.WDRow + 1
-Call LoadWDDataArrayToForm
+    If Me.WDRow = AD2 Then Exit Sub
+    Call LoadWDDataToArray
+    Me.WDRow = Me.WDRow + 1
+    Me.WDColumn = 1
+    Call LoadWDDataArrayToForm
+    Call ChoiceFieldsBlank
 End Sub
-
 
 'Column
 Private Sub WDSelectColumn_SpinDown()
-If Me.WDColumn = 1 Then Exit Sub
-Call LoadWDDataToArray
-Me.WDColumn = Me.WDColumn - 1
-Call LoadWDDataArrayToForm
+    If Me.WDColumn = 1 Then Exit Sub
+    Call LoadWDDataToArray
+    Me.WDColumn = Me.WDColumn - 1
+    Call LoadWDDataArrayToForm
+    Call ChoiceFieldsBlank
 End Sub
 
 Private Sub WDSelectColumn_SpinUp()
-If Me.WDColumn = 30 Then Exit Sub
-Call LoadWDDataToArray
-Me.WDColumn = Me.WDColumn + 1
-Call LoadWDDataArrayToForm
+    If Me.WDColumn = AD3 Then Exit Sub
+    Call LoadWDDataToArray
+    Me.WDColumn = Me.WDColumn + 1
+    Call LoadWDDataArrayToForm
+    Call ChoiceFieldsBlank
 End Sub
 
+Sub ChoiceFieldsBlank()
+    If WDdata(Me.WDPage, 0, 0, 2) = "" Then WDRibbonBar = False
+    If WDdata(Me.WDPage, Me.WDRow, 0, 14) = "" Then WDIncludeRow = False
+    If WDdata(Me.WDPage, Me.WDRow, Me.WDColumn, 191) = "" Then WDOptionText = False
+    If WDdata(Me.WDPage, Me.WDRow, Me.WDColumn, 192) = "" Then WDOptionMetrics = False
+    If WDdata(Me.WDPage, Me.WDRow, Me.WDColumn, 193) = "" Then WDOptionCharts = False
+    If WDdata(Me.WDPage, Me.WDRow, Me.WDColumn, 194) = "" Then WDOptionTable = False
+    If WDdata(Me.WDPage, Me.WDRow, Me.WDColumn, 195) = "" Then WDIncludeColumn = False
+    If WDdata(Me.WDPage, Me.WDRow, Me.WDColumn, 136) = "" Then WDChartLayerInclude1 = False
+    If WDdata(Me.WDPage, Me.WDRow, Me.WDColumn, 137) = "" Then WDChartLayerInclude2 = False
+    If WDdata(Me.WDPage, Me.WDRow, Me.WDColumn, 138) = "" Then WDChartLayerInclude3 = False
+    If WDdata(Me.WDPage, Me.WDRow, Me.WDColumn, 139) = "" Then WDChartLayerInclude4 = False
+    If WDdata(Me.WDPage, Me.WDRow, Me.WDColumn, 140) = "" Then WDChartLayerInclude5 = False
+End Sub
 
 'INIT_FUNCTIONS#######################################################################################################################################################
 
@@ -283,18 +321,6 @@ Sub BuildWDDataArray()
     CD = "7,)zbZ,>-_*/*6yeLSX&~@@y,k6$HksXyX~ex}#g&(AL\yDY(kcn9!`xQg9$[GyVq;(a/vC$4T=^+jB?yL3M8m'u]76F)v/XaEV'#>K?f5g=5]7>^h!y4:%c{_SW*fky" 'Column Data
     TD = "auY5xUf454Ajc6~~}.CS.<DZU7bB?Ee.+;YZ5$J?N9!68.~fgrquYj]{A,5Rfe$(;=caBe*\g!$%b4REtwkn6w]]cT>N[T([VE_J?%}$DNak`w)@:58zse[<4M#d.Zp6" 'Text Column Data
     JD = "Hn:w_N<mSpmm,w~_DrC,~}:6$yneD:9+KhA>,nr3X+w-:jVQYCpND=]4?-,g[pA)wcN''zffZW(U=?&uXGj&~V%8N^5ryBN`@+MsY!<;x`;r6dd#y*'5@:x2{u_w}LH]" 'JavaScript Data
-'
-
-'    MD = "<~!MD!~>" 'Metadata
-'    PP = "<~!PP!~>" 'Page
-'    PD = "<~!PD!~>" 'Page Data
-'    RR = "<~!PR!~>" 'Row
-'    RD = "<~!RD!~>" 'Row Data
-'    CC = "<~!CC!~>" 'Column
-'    CD = "<~!CD!~>" 'Column Data
-'    TD = "<~!TD!~>" 'Text Column Data
-'    JD = "<~!JD!~>" 'JavaScript Data
-
 
     AD1 = 100  'WDdata Dimention 1
     AD2 = 100  'WDdata Dimention 2
@@ -340,7 +366,7 @@ Sub ConcatinateWDDataArray()
         
         'Rows
         For R = 1 To 100
-            If WDdata(P, R, 0, R - 1) = "" Then Exit For
+            If WDdata(P, R, 0, R - 1) = False Then Exit For
             'Row Data
             For RA = 0 To DR
                 AllData = AllData & WDdata(P, R, 0, RA) & RD
@@ -348,7 +374,7 @@ Sub ConcatinateWDDataArray()
 
             'Columns
             For c = 1 To 30
-                If WDdata(P, R, c, c - 1) = "" Then Exit For
+                If WDdata(P, R, c, c - 1) = False Then Exit For
                 'Column Data
                 For CA = 0 To DC
                     AllData = AllData & WDdata(P, R, c, CA) & CD
@@ -2273,4 +2299,141 @@ Sub ListBoxesLoad()
         .AddItem WD.BStableColorDark
     End With
     
+End Sub
+
+
+Sub WriteHTMLDocument()
+    Dim WD As WebDev
+    Set WD = New WebDev
+
+    HTML = ""
+    HTML = HTML & "<html>" & vbNewLine
+    HTML = HTML & "<head>" & vbNewLine
+    
+    
+    
+'Title######################################################################################
+    HTML = HTML & "<title>" & Me.WDdata(Me.WDPage, 0, 0, 1) & "</title>" & vbNewLine
+        
+        
+        
+'CSS########################################################################################
+       '<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'>
+    
+    HTML = HTML & "<link rel='stylesheet' href='" & WD.Bootstrap4CSS & "' href='styles.css'>" & vbNewLine
+    HTML = HTML & "<link rel='stylesheet' href='" & "https://objective/id:BQ13784116" & "' href='styles.css'>" & vbNewLine
+    HTML = HTML & "<link rel='stylesheet' href='" & "https://objective/id:BQ13784109" & "' href='styles.css'>" & vbNewLine
+    
+    
+'User CSS###################################################################################
+    HTML = HTML & "<link rel='stylesheet' href='" & WDdata(Me.WDPage, 0, 0, 7) & "' href='styles.css'>" & vbNewLine
+
+    
+    
+
+'Custom CSS#################################################################################
+    HTML = HTML & "<style>" & vbNewLine
+    
+        HTML = HTML & ".body{" & vbNewLine
+            HTML = HTML & "background-color:" & WDdata(Me.WDPage, 0, 0, 3) & ";" & vbNewLine
+            HTML = HTML & "background-image: url('" & WDdata(Me.WDPage, 0, 0, 4) & "');" & vbNewLine
+            HTML = HTML & "background-position: center;" & vbNewLine
+            HTML = HTML & "background-repeat: no-repeat;" & vbNewLine
+            HTML = HTML & "background-size: cover;" & vbNewLine
+        HTML = HTML & "}" & vbNewLine
+        
+        HTML = HTML & ".wrapper{" & vbNewLine
+            HTML = HTML & "display: grid;" & vbNewLine
+            HTML = HTML & "grid-gap: 0px;" & vbNewLine
+        HTML = HTML & "}" & vbNewLine
+        
+    HTML = HTML & "</style>" & vbNewLine
+
+    
+    
+'Body#######################################################################################
+    HTML = HTML & "</head>" & vbNewLine
+    HTML = HTML & "<body class='body'>" & vbNewLine
+    
+    
+    For R = 1 To AD2
+        
+        If WDdata(Me.WDPage, R, 0, 14) = False Then Exit For
+        
+        'Column Counter
+        For i = 1 To AD3
+            If WDdata(Me.WDPage, R, i, 195) = False Then Exit For
+        Next i
+        i = i - 1
+        
+        HTML = HTML & "<div style='grid-template-columns: repeat(auto-fit, minmax(" & 100 / i & "%, " & 100 / i & "%));' class='wrapper'>" & vbNewLine
+        
+        
+
+
+        For c = 1 To AD3
+            If WDdata(Me.WDPage, R, c, 195) = False Then Exit For
+            
+                'Text
+                If WDdata(Me.WDPage, R, c, 191) = True Then
+                    HTML = HTML & WDdata(Me.WDPage, R, c, 1) & vbNewLine
+                End If
+                
+                'Metrics
+                If WDdata(Me.WDPage, R, c, 192) = True Then
+                    
+                End If
+                
+                'Charts
+                If WDdata(Me.WDPage, R, c, 193) = True Then
+                
+                
+                End If
+                
+                'Table
+                If WDdata(Me.WDPage, R, c, 194) = True Then
+                
+                
+                End If
+                
+        Next c
+        HTML = HTML & "</div>" & vbNewLine
+    Next R
+    
+    
+    
+    
+'JS#########################################################################################
+    HTML = HTML & "<script src='" & WD.Bootstrap4JS & "'></script>" & vbNewLine
+    HTML = HTML & "<script src='" & WD.popperJS & "'></script>" & vbNewLine
+    HTML = HTML & "<script src='" & WD.jQueryJS & "'></script>" & vbNewLine
+    HTML = HTML & "<script src='" & "https://objective/id:BQ13784116" & "'></script>" & vbNewLine
+    HTML = HTML & "<script src='https://canvasjs.com/assets/script/canvasjs.min.js'></script>" & vbNewLine
+    
+    
+'User JS####################################################################################
+    HTML = HTML & "<script src='" & WDdata(Me.WDPage, 0, 0, 5) & "'></script>" & vbNewLine
+    HTML = HTML & "<script src='" & WDdata(Me.WDPage, 0, 0, 6) & "'></script>" & vbNewLine
+    
+
+    
+'Custom JS##################################################################################
+    HTML = HTML & "<script>" & vbNewLine
+        HTML = HTML & WDdata(Me.WDPage, 0, 0, 18) & vbNewLine
+    HTML = HTML & "</script>" & vbNewLine
+    
+    HTML = HTML & "</body>" & vbNewLine
+    HTML = HTML & "</html>" & vbNewLine
+    
+    
+    
+'Canvas JS (Charts)#########################################################################
+
+
+
+
+    Set fs = CreateObject("Scripting.FileSystemObject")
+    Set a = fs.CreateTextFile("C:\Users\" & Environ("UserName") & "\Desktop\" & Me.WDdata(Me.WDPage, 0, 0, 1) & ".html", True)
+    a.WriteLine HTML
+    a.Close
 End Sub
