@@ -95,6 +95,10 @@ Public XLWD As String
 
 
 
+Private Sub Label86_Click()
+
+End Sub
+
 'Spare Delimiters https://passwordsgenerator.net/
     '7,}fu?[K3b;Cnc:(=&-?')9dzr!?$C35}B2&dZSQF-QW9/q\~+':yBVA86R3D7E*U!2bX^(CxdB#kM>K7m>v6gj6p&([F=jjgt3bJ6D&7zF)>&L!xMhaQq:2CF$qM$>
     'n&:>}spv2k;jP)XjyAMF5V.W[Ds'K~awWTZRHP3gX7Y5pj3~5K,=)*d6_ENaz-Q:x5A^zm4~DkR`$;!DKP<^v=39}Q96.GJ,H5&)u'g)<<[\br3DAJ!W/-duuk?h;sfU
@@ -109,7 +113,7 @@ Public XLWD As String
 
 'Open/Activate/Initiate###############################################################################################################################################
 Private Sub UserForm_Activate()
-
+    
 End Sub
 
 Private Sub UserForm_Initialize()
@@ -119,36 +123,43 @@ Private Sub UserForm_Initialize()
     Me.WDColumn = 1
     Call BuildWDDataArray
        
-    Dim GetFile As Integer
-      
-    GetFile = MsgBox("Load Existing XLWD File" & vbNewLine & "(Excel Web Development File)?", vbYesNo, "New or Load")
-    If GetFile = 6 Then
-    
-        'Get File
-        Dim textline As String
-        On Error GoTo en:
-        myfile = Application.GetOpenFilename(FileFilter:="XLWD File (*.xlwd), *.xlwd")
-        Open myfile For Input As #1
-        Application.Wait (Now + TimeValue("0:00:05"))
-        Do Until EOF(1)
-            Line Input #1, textline
-            XLWD = XLWD & textline
-        Loop
-        
-        Call SplitWDDataArray
-        Call LoadWDDataArrayToForm
-    End If
+'    Dim GetFile As Integer
+'
+'    GetFile = MsgBox("Load Existing XLWD File" & vbNewLine & "(Excel Web Development File)?", vbYesNo, "New or Load")
+'    If GetFile = 6 Then
+'
+'        'Get File
+'        Dim textline As String
+'        On Error GoTo en:
+'        myfile = Application.GetOpenFilename(FileFilter:="XLWD File (*.xlwd), *.xlwd")
+'        Open myfile For Input As #1
+'        Application.Wait (Now + TimeValue("0:00:05"))
+'        Do Until EOF(1)
+'            Line Input #1, textline
+'            XLWD = XLWD & textline
+'        Loop
+'
+'        Call SplitWDDataArray
+'        Call LoadWDDataArrayToForm
+'    End If
     
     'Formatting Adjustments
 en:
     Call ColumnTypeOptions
     Call ListBoxesLoad
+    Close #1
 End Sub
 
 Private Sub WDCreate_Click()
 Call LoadWDDataToArray
 Call WriteHTMLDocument
 End Sub
+
+'Warnings#############################################################################################################################################################
+Sub InclusionWarning()
+If WDIncludeColumn = False Or WDIncludeRow = False Then MsgBox ("Insure you select the 'Row' or 'Column' 'Include' Tick Box. If they are unticked, this and all subsequent Rows or Columns will not be saved")
+End Sub
+
 
 'Buttons##############################################################################################################################################################
 Private Sub WDSave_Click()
@@ -192,7 +203,7 @@ Dim textline, myTempFile As String
 On Error GoTo en:
 myTempFile = Application.GetOpenFilename(FileFilter:="XLWD File (*.xlwd), *.xlwd")
 Open myTempFile For Input As #1
-
+Application.Wait (Now + TimeValue("0:00:05"))
 Do Until EOF(1)
     Line Input #1, textline
     XLWD = XLWD & textline
@@ -204,6 +215,7 @@ Call LoadWDDataArrayToForm
 myfile = myTempFile
 en:
 Call ColumnTypeOptions
+Close #1
 End Sub
 
 Private Sub WDClose_Click()
@@ -231,6 +243,7 @@ Private Sub WDSelectPage_SpinDown()
     Me.WDColumn = 1
     Call LoadWDDataArrayToForm
     Call ChoiceFieldsBlank
+    Call InclusionWarning
 End Sub
 
 Private Sub WDSelectPage_SpinUp()
@@ -241,6 +254,7 @@ Private Sub WDSelectPage_SpinUp()
     Me.WDColumn = 1
     Call LoadWDDataArrayToForm
     Call ChoiceFieldsBlank
+    Call InclusionWarning
 End Sub
 
 'Row
@@ -251,6 +265,7 @@ Private Sub WDSelectRow_SpinDown()
     Me.WDColumn = 1
     Call LoadWDDataArrayToForm
     Call ChoiceFieldsBlank
+    Call InclusionWarning
 End Sub
 
 Private Sub WDSelectRow_SpinUp()
@@ -260,6 +275,7 @@ Private Sub WDSelectRow_SpinUp()
     Me.WDColumn = 1
     Call LoadWDDataArrayToForm
     Call ChoiceFieldsBlank
+    Call InclusionWarning
 End Sub
 
 'Column
@@ -269,6 +285,7 @@ Private Sub WDSelectColumn_SpinDown()
     Me.WDColumn = Me.WDColumn - 1
     Call LoadWDDataArrayToForm
     Call ChoiceFieldsBlank
+    Call InclusionWarning
 End Sub
 
 Private Sub WDSelectColumn_SpinUp()
@@ -277,6 +294,7 @@ Private Sub WDSelectColumn_SpinUp()
     Me.WDColumn = Me.WDColumn + 1
     Call LoadWDDataArrayToForm
     Call ChoiceFieldsBlank
+    Call InclusionWarning
 End Sub
 
 Sub ChoiceFieldsBlank()
@@ -373,16 +391,16 @@ Sub ConcatinateWDDataArray()
             Next RA
 
             'Columns
-            For c = 1 To 30
-                If WDdata(P, R, c, c - 1) = False Then Exit For
+            For C = 1 To 30
+                If WDdata(P, R, C, C - 1) = False Then Exit For
                 'Column Data
                 For CA = 0 To DC
-                    AllData = AllData & WDdata(P, R, c, CA) & CD
+                    AllData = AllData & WDdata(P, R, C, CA) & CD
                 Next CA
 
                 'Concatinate Columns
                 AllData = AllData & CC
-            Next c
+            Next C
 
             'Concatinate Rows
             AllData = AllData & RR
@@ -439,14 +457,14 @@ Sub SplitWDDataArray()
 
             'Columns
             CLS = Split(RWS(R), Me.CC)
-            For c = 0 To UBound(CLS)
+            For C = 0 To UBound(CLS)
 
                 'Column Data
-                CLSD = Split(CLS(c), Me.CD)
+                CLSD = Split(CLS(C), Me.CD)
                 For CA = 1 To UBound(CLSD) - 1
-                    WDdata(P - 1, R + 1, c + 1, CA) = CLSD(CA)
+                    WDdata(P - 1, R + 1, C + 1, CA) = CLSD(CA)
                 Next CA
-            Next c
+            Next C
         Next R
     Next P
     
@@ -1033,7 +1051,7 @@ End Sub
 
 'Row Padding Bottom
 Private Sub WDRowPaddingBottom_BeforeUpdate(ByVal Cancel As MSForms.ReturnBoolean)
-    WDRowPaddingBottomTopIsNumeric = Me.WDRowPaddingBottom
+    WDRowPaddingBottomIsNumeric = Me.WDRowPaddingBottom
 End Sub
 Private Sub WDRowPaddingBottom_Change()
     If IsNumeric(Me.WDRowPaddingBottom) = False And Me.WDRowPaddingBottom <> "" Then
@@ -1926,37 +1944,93 @@ Sub ListBoxesLoad()
     End With
 
     With Me.WDColumnTableStyle
-        .AddItem WD.BScontainerDanger
-        .AddItem WD.BScontainerInfo
-        .AddItem WD.BScontainerWarning
-        .AddItem WD.BScontainerSecondary
-        .AddItem WD.BStextWhite
-        .AddItem WD.BStextPrimary
-        .AddItem WD.BStextDark
-        .AddItem WD.BStextDanger
-        .AddItem WD.BStextInfo
-        .AddItem WD.BStextWarning
-        .AddItem WD.BStextSecondary
-        .AddItem WD.BStablePlane
-        .AddItem WD.BStableStripped
-        .AddItem WD.BStableBorered
-        .AddItem WD.BStableHover
-        .AddItem WD.BStableDark
-        .AddItem WD.BStableDarkStripped
-        .AddItem WD.BStableDarkHover
-        .AddItem WD.BStableborderless
-        .AddItem WD.BStabletheadDark
-        .AddItem WD.BStabletheadLight
-        .AddItem WD.BStableSmall
-        .AddItem WD.BStableColorPrimary
-        .AddItem WD.BStableColorSuccess
-        .AddItem WD.BStableColorDanger
-        .AddItem WD.BStableColorInfo
-        .AddItem WD.BStableColorWarning
-        .AddItem WD.BStableColorActive
-        .AddItem WD.BStableColorSecondary
-        .AddItem WD.BStableColorLight
-        .AddItem WD.BStableColorDark
+        .AddItem "Table-striped"
+        .AddItem "Table-bordered"
+        .AddItem "table-hover"
+        .AddItem "table-dark"
+        .AddItem "table-dark table-striped"
+        .AddItem "table-dark Table-bordered"
+        .AddItem "table-dark table-hover"
+        .AddItem "table-borderless"
+        .AddItem "table-primary"
+        .AddItem "table-success"
+        .AddItem "table-danger"
+        .AddItem "table-info"
+        .AddItem "table-warning"
+        .AddItem "table-active"
+        .AddItem "table-secondary"
+        .AddItem "table-light"
+        
+        .AddItem "Table-striped table-responsive-sm"
+        .AddItem "Table-bordered table-responsive-sm"
+        .AddItem "table-hover table-responsive-sm"
+        .AddItem "table-dark table-responsive-sm"
+        .AddItem "table-dark table-striped table-responsive-sm"
+        .AddItem "table-dark Table-bordered table-responsive-sm"
+        .AddItem "table-dark table-hover"
+        .AddItem "table-borderless table-responsive-sm"
+        .AddItem "table-primary table-responsive-sm"
+        .AddItem "table-success table-responsive-sm"
+        .AddItem "table-danger table-responsive-sm"
+        .AddItem "table-info table-responsive-sm"
+        .AddItem "table-warning table-responsive-sm"
+        .AddItem "table-active table-responsive-sm"
+        .AddItem "table-secondary table-responsive-sm"
+        .AddItem "table-light table-responsive-sm"
+        
+        
+        .AddItem "Table-striped table-responsive-md"
+        .AddItem "Table-bordered table-responsive-md"
+        .AddItem "table-hover table-responsive-md"
+        .AddItem "table-dark table-responsive-md"
+        .AddItem "table-dark table-striped table-responsive-md"
+        .AddItem "table-dark Table-bordered table-responsive-md"
+        .AddItem "table-dark table-hover table-responsive-md"
+        .AddItem "table-borderless table-responsive-md"
+        .AddItem "table-primary table-responsive-md"
+        .AddItem "table-success table-responsive-md"
+        .AddItem "table-danger table-responsive-md"
+        .AddItem "table-info table-responsive-md"
+        .AddItem "table-warning table-responsive-md"
+        .AddItem "table-active table-responsive-md"
+        .AddItem "table-secondary table-responsive-md"
+        .AddItem "table-light table-responsive-md"
+        
+        
+        .AddItem "Table-striped table-responsive-lg"
+        .AddItem "Table-bordered table-responsive-lg"
+        .AddItem "table-hover table-responsive-lg"
+        .AddItem "table-dark table-responsive-lg"
+        .AddItem "table-dark table-striped table-responsive-lg"
+        .AddItem "table-dark Table-bordered table-responsive-lg"
+        .AddItem "table-dark table-hover table-responsive-lg"
+        .AddItem "table-borderless table-responsive-lg"
+        .AddItem "table-primary table-responsive-lg"
+        .AddItem "table-success table-responsive-lg"
+        .AddItem "table-danger table-responsive-lg"
+        .AddItem "table-info table-responsive-lg"
+        .AddItem "table-warning table-responsive-lg"
+        .AddItem "table-active table-responsive-lg"
+        .AddItem "table-secondary table-responsive-lg"
+        .AddItem "table-light table-responsive-lg"
+        
+        
+        .AddItem "Table-striped table-responsive-xl"
+        .AddItem "Table-bordered table-responsive-xl"
+        .AddItem "table-hover table-responsive-xl"
+        .AddItem "table-dark table-responsive-xl"
+        .AddItem "table-dark table-striped table-responsive-xl"
+        .AddItem "table-dark Table-bordered table-responsive-xl"
+        .AddItem "table-dark table-hover table-responsive-xl"
+        .AddItem "table-borderless table-responsive-xl"
+        .AddItem "table-primary table-responsive-xl"
+        .AddItem "table-success table-responsive-xl"
+        .AddItem "table-danger table-responsive-xl"
+        .AddItem "table-info table-responsive-xl"
+        .AddItem "table-warning table-responsive-xl"
+        .AddItem "table-active table-responsive-xl"
+        .AddItem "table-secondary table-responsive-xl"
+        .AddItem "table-light table-responsive-xl"
     End With
     
     With Me.WDMartricsStyle1
@@ -2366,38 +2440,45 @@ Sub WriteHTMLDocument()
         Next i
         i = i - 1
         
+        On Error GoTo nxt:
         HTML = HTML & "<div style='grid-template-columns: repeat(auto-fit, minmax(" & 100 / i & "%, " & 100 / i & "%));' class='wrapper'>" & vbNewLine
-        
-        
+nxt:
+        On Error GoTo 0
 
 
-        For c = 1 To AD3
-            If WDdata(Me.WDPage, R, c, 195) = False Then Exit For
-            
+        For C = 1 To AD3
+            'On Error GoTo enCol:
+            If WDdata(Me.WDPage, R, C, 195) = False Then Exit For
+            HTML = HTML & "<div>" & vbNewLine
                 'Text
-                If WDdata(Me.WDPage, R, c, 191) = True Then
-                    HTML = HTML & WDdata(Me.WDPage, R, c, 1) & vbNewLine
+                If WDdata(Me.WDPage, R, C, 191) = True Then
+                    HTML = HTML & WDdata(Me.WDPage, R, C, 1) & vbNewLine
                 End If
                 
                 'Metrics
-                If WDdata(Me.WDPage, R, c, 192) = True Then
+                If WDdata(Me.WDPage, R, C, 192) = True Then
                     
                 End If
                 
                 'Charts
-                If WDdata(Me.WDPage, R, c, 193) = True Then
+                If WDdata(Me.WDPage, R, C, 193) = True Then
                 
                 
                 End If
                 
                 'Table
-                If WDdata(Me.WDPage, R, c, 194) = True Then
-                
-                
+                If WDdata(Me.WDPage, R, C, 194) = True Then
+                    Dim RowR As Integer
+                    Dim ColC As Integer
+                    RowR = R
+                    ColC = C
+                    HTML = HTML & WDTable(RowR, ColC, i)
                 End If
-                
-        Next c
+                HTML = HTML & "</div>" & vbNewLine
+        Next C
         HTML = HTML & "</div>" & vbNewLine
+enCol:
+On Error GoTo 0
     Next R
     
     
@@ -2437,3 +2518,224 @@ Sub WriteHTMLDocument()
     a.WriteLine HTML
     a.Close
 End Sub
+
+
+
+
+'Data_Shaping###############################################################################
+
+    'Metrics################################################################################
+    
+    'Charts#################################################################################
+    
+    'Text###################################################################################
+    
+ 
+    
+    'Table##################################################################################
+    
+    Function WDTable(R As Integer, C As Integer, ColumnCount) As String
+        Dim i As Long
+        Dim TempVar As String
+        Dim TableData As Variant
+        Dim L As Integer
+        
+        'Table Data
+        TableData = Worksheets(WDdata(Me.WDPage, R, C, 4)).Range(WDdata(Me.WDPage, R, C, 5) & ":" & WDdata(Me.WDPage, R, C, 6), _
+                    Worksheets(WDdata(Me.WDPage, R, C, 4)).Range(WDdata(Me.WDPage, R, C, 5) & ":" & WDdata(Me.WDPage, R, C, 6)).End(xlDown)).Value
+        
+        'Initiate
+        i = 1
+        WDTable = "<table class=' table " & WDdata(Me.WDPage, R, C, 8) & "' " & _
+                  "style='font-family:" & WDdata(Me.WDPage, R, C, 9) & _
+                  "; font-size:" & WDdata(Me.WDPage, R, C, 10) & "pt; " & _
+                  "; padding-left:" & WDdata(Me.WDPage, R, C, 12) & _
+                  "px; Padding-right:" & WDdata(Me.WDPage, R, C, 13) & _
+                  "px; margin-left:" & WDdata(Me.WDPage, R, C, 14) & _
+                  "px; margin-right:" & WDdata(Me.WDPage, R, C, 15) & _
+                  "px; width:" & WDdata(Me.WDPage, R, C, 16) & _
+                  "%;' align='center'>" & vbNewLine
+        
+        'Table Column Counter
+        L = DimentionCounter(TableData)
+    
+        'Header
+        If WDdata(Me.WDPage, R, C, 11) = "yes" Then
+            WDTable = WDTable & "<thead>" & vbNewLine
+            WDTable = WDTable & "<tr>" & vbNewLine
+            
+            'Column Loop
+            For j = i To L
+                WDTable = WDTable & "<th>" & TableData(1, j) & "</th>" & vbNewLine
+            Next j
+            WDTable = WDTable & "</tr>" & vbNewLine
+            WDTable = WDTable & "</thead>" & vbNewLine
+            i = 2
+            
+        End If
+        
+        'Body
+        If WDdata(Me.WDPage, R, C, 7) <> "count" And WDdata(Me.WDPage, R, C, 7) <> "average" And WDdata(Me.WDPage, R, C, 7) <> "sum" Then
+        'Plane Table
+            WDTable = WDTable & "<tbody>" & vbNewLine
+            For j = i To UBound(TableData)
+                WDTable = WDTable & "<tr>" & vbNewLine
+                For k = 1 To L
+                    WDTable = WDTable & "<td>" & TableData(j, k) & "</td>" & vbNewLine
+                Next k
+                WDTable = WDTable & "</tr>" & vbNewLine
+            Next j
+        
+        Else
+        'Aggregated Table
+            Dim uWDTable As Variant
+            
+            'ByVar error curcumvent
+            Dim TempAry
+            Dim ii As Integer
+            ii = i
+            TempAry = TableData
+                uWDTable = WDTableAgg(TempAry, ii, R, C)
+            TempAry = Empty
+            
+            WDTable = WDTable & "<tbody>" & vbNewLine
+            For j = i To UBound(uWDTable)
+                WDTable = WDTable & "<tr>" & vbNewLine
+                For k = 1 To L
+                    WDTable = WDTable & "<td>" & uWDTable(j, k) & "</td>" & vbNewLine
+                Next k
+                WDTable = WDTable & "</tr>" & vbNewLine
+            Next j
+        End If
+        WDTable = WDTable & "</tbody>" & vbNewLine
+        WDTable = WDTable & "</table>" & vbNewLine
+    End Function
+
+    Function WDTableAgg(WDTable As Variant, rows As Integer, R As Integer, C As Integer) As Variant
+    'This Function creates an aggregated HTML Table from an Array (Options are: sum, average and count)
+    'WDTable is the Array
+    'rows identifies the starting row/has header (true/false)
+
+        Dim counter As Long
+        Dim uWDTable As Variant
+        counter = o
+        Agg = 0
+        
+        'ByVar error curcumvent
+        Dim TempAry
+        Dim ii As Integer
+        TempAry = WDTable
+        
+        'Count Columns/Dimentions
+        Dim cols As Integer
+            cols = DimentionCounter(TempAry)
+        
+        
+        'Unique Values
+        ii = rows
+            uWDTable = WDUniqueValues(TempAry, ii)
+            
+        TempAry = Empty
+        ReDim TempAry(1 To UBound(uWDTable), 1 To cols)
+        For i = 1 To UBound(uWDTable)
+            TempAry(i, 1) = uWDTable(i)
+        Next i
+        uWDTable = Empty
+        uWDTable = TempAry
+        TempAry = Empty
+        
+        'Fills the uWDArray with Zeros
+        For i = rows To UBound(uWDTable)
+            For j = 2 To cols
+                uWDTable(i, j) = 0
+            Next j
+        Next i
+        
+        
+        Dim rowCounter As Long
+        If rows = 1 Then rowCounter = UBound(WDTable)
+        If rows = 2 Then rowCounter = UBound(WDTable) - 1
+        
+        'Creates the HTML Table
+        WDTableAgg = ""
+        For i = rows To UBound(uWDTable)
+        'Cycles through uWDTable (Unique Values)
+            For k = 2 To cols
+            'Cucle Through Table/Array Columns/Dimentions
+                For j = rows To UBound(WDTable)
+                'Cycle through WD Table
+                    If WDTable(j, 1) = uWDTable(i, 1) Then
+                    'Identifies identical values between WDTable and uWDTable (Unique Values)
+                        Select Case True
+                        'Aggregation type
+                            Case WDdata(Me.WDPage, R, C, 7) = "sum"
+                            'Sum
+                                uWDTable(i, k) = uWDTable(i, k) + WDTable(j, k)
+                            Case WDdata(Me.WDPage, R, C, 7) = "average"
+                            'Average
+                                uWDTable(i, k) = uWDTable(i, k) + WDTable(j, k)
+                                counter = counter + 1
+                            Case WDdata(Me.WDPage, R, C, 7) = "count"
+                            'Count
+                                If WDTable(j, k) <> "" Then uWDTable(i, k) = uWDTable(i, k) + 1
+                                'Identifies if the cell/Dimential Address contains a value
+                        End Select
+                    End If
+                Next j
+                'Average result
+                If WDdata(Me.WDPage, R, C, 7) = "average" Then uWDTable(i, k) = uWDTable(i, k) / counter
+            Next k
+        Next i
+        
+        'Result
+        WDTableAgg = uWDTable
+    End Function
+
+    Function DimentionCounter(index As Variant) As Integer
+    'This Function Counts the Columns/Dimentions in an Array
+    'index is the input array
+    
+        On Error GoTo LC:
+        For L = 1 To 100
+            TempVar = index(1, L)
+        Next L
+LC:
+        L = L - 1
+        On Error GoTo 0
+        DimentionCounter = L
+    End Function
+    
+    Function WDUniqueValues(index As Variant, rows As Integer) As Variant
+    'Finds the unique values or the first column/dimention in an array
+    'index is the input array
+        
+        Dim L As Integer
+        
+        Dim C As Long
+        Dim U As Boolean
+        Dim UnqAryVals As Variant
+        ReDim UnqAryVals(1 To UBound(index))
+        
+        'ByVar error curcumvent
+        Dim TempAry
+        Dim ii As Integer
+        TempAry = index
+            L = DimentionCounter(TempAry)
+        TempAry = Empty
+        
+        UnqAryVals(1) = index(1, 1)
+        C = 1
+        For i = rows To UBound(index)
+            U = True
+            For j = 1 To UBound(UnqAryVals)
+                If index(i, 1) = UnqAryVals(j) Then U = False
+            Next j
+            If U = True Then
+                UnqAryVals(C + 1) = index(i, 1)
+                C = C + 1
+            End If
+        Next i
+        
+        ReDim Preserve UnqAryVals(1 To C)
+        WDUniqueValues = UnqAryVals
+    End Function
