@@ -92,8 +92,9 @@ Public XLWD As String
     Public WDChartLegendTextSizeIsNumeric
     Public WDChartTooltipBorderRadiousIsNumeric
 
+Private Sub Label7_Click()
 
-
+End Sub
 
 Private Sub Label86_Click()
 
@@ -2193,6 +2194,7 @@ Sub WriteHTMLDocument()
             HTML = HTML & "background-image: url('" & WDdata(Me.WDPage, 0, 0, 4) & "');" & vbNewLine
             HTML = HTML & "background-position: center;" & vbNewLine
             HTML = HTML & "background-repeat: no-repeat;" & vbNewLine
+            HTML = HTML & "background-attachment: fixed;" & vbNewLine
             HTML = HTML & "background-size: cover;" & vbNewLine
         HTML = HTML & "}" & vbNewLine
         
@@ -2210,7 +2212,7 @@ Sub WriteHTMLDocument()
     HTML = HTML & "<body class='body'>" & vbNewLine
     
     'Navigation Bar
-    If WDdata(Me.WDPage, 0, 0, 2) = True Then HTML = HTML & WDNavigationBar()
+    If WDdata(Me.WDPage, 0, 0, 2) = True Then HTML = HTML & WDNavigationBar() & "<br><br>"
     
     For R = 1 To AD2
         
@@ -2334,13 +2336,13 @@ End Sub
     
     'Title
     WDNavigationBar = "<nav class='navbar navbar-expand-sm bg-dark navbar-dark fixed-top' style=';'>" & vbNewLine
-    WDNavigationBar = WDNavigationBar & "<a class='navbar-brand' href='#'>" & WDTable(Me.WDPage, 0, 0, 1) & "</a>" & vbNewLine
+    WDNavigationBar = WDNavigationBar & "<a class='navbar-brand' href='#'>" & WDdata(Me.WDPage, 0, 0, 1) & "</a>" & vbNewLine
     WDNavigationBar = WDNavigationBar & "<ul class='navbar-nav'>" & vbNewLine
     
     'Links
     For i = 1 To 5
         WDNavigationBar = WDNavigationBar & "<li class='nav-item'>" & vbNewLine
-            WDNavigationBar = WDNavigationBar & "<a class='nav-link' href='" & WDTable(Me.WDPage, 0, 0, i + 12) & "'>" & WDTable(Me.WDPage, 0, 0, i + 7) & "</a>" & vbNewLine
+            WDNavigationBar = WDNavigationBar & "<a class='nav-link' href='" & WDdata(Me.WDPage, 0, 0, i + 12) & "'>" & WDdata(Me.WDPage, 0, 0, i + 7) & "</a>" & vbNewLine
         WDNavigationBar = WDNavigationBar & "</li>" & vbNewLine
     Next i
     
