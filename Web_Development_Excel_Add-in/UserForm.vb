@@ -2034,343 +2034,123 @@ Sub ListBoxesLoad()
     End With
     
     With Me.WDMartricsStyle1
-        .AddItem WD.BScontainerDanger
-        .AddItem WD.BScontainerInfo
-        .AddItem WD.BScontainerWarning
-        .AddItem WD.BScontainerSecondary
-        .AddItem WD.BStextWhite
-        .AddItem WD.BStextPrimary
-        .AddItem WD.BStextDark
-        .AddItem WD.BStextDanger
-        .AddItem WD.BStextInfo
-        .AddItem WD.BStextWarning
-        .AddItem WD.BStextSecondary
-        .AddItem WD.BStablePlane
-        .AddItem WD.BStableStripped
-        .AddItem WD.BStableBorered
-        .AddItem WD.BStableHover
-        .AddItem WD.BStableDark
-        .AddItem WD.BStableDarkStripped
-        .AddItem WD.BStableDarkHover
-        .AddItem WD.BStableborderless
-        .AddItem WD.BStabletheadDark
-        .AddItem WD.BStabletheadLight
-        .AddItem WD.BStableSmall
-        .AddItem WD.BStableColorPrimary
-        .AddItem WD.BStableColorSuccess
-        .AddItem WD.BStableColorDanger
-        .AddItem WD.BStableColorInfo
-        .AddItem WD.BStableColorWarning
-        .AddItem WD.BStableColorActive
-        .AddItem WD.BStableColorSecondary
-        .AddItem WD.BStableColorLight
-        .AddItem WD.BStableColorDark
+        .AddItem "btn-primary"
+        .AddItem "btn-secondary"
+        .AddItem "btn-success"
+        .AddItem "btn-info"
+        .AddItem "btn-warning"
+        .AddItem "btn-danger"
+        .AddItem "btn-dark"
+        .AddItem "btn-light"
+        .AddItem "btn-link"
     End With
     
     With Me.WDMartricsStyle2
-        .AddItem WD.BScontainerDanger
-        .AddItem WD.BScontainerInfo
-        .AddItem WD.BScontainerWarning
-        .AddItem WD.BScontainerSecondary
-        .AddItem WD.BStextWhite
-        .AddItem WD.BStextPrimary
-        .AddItem WD.BStextDark
-        .AddItem WD.BStextDanger
-        .AddItem WD.BStextInfo
-        .AddItem WD.BStextWarning
-        .AddItem WD.BStextSecondary
-        .AddItem WD.BStablePlane
-        .AddItem WD.BStableStripped
-        .AddItem WD.BStableBorered
-        .AddItem WD.BStableHover
-        .AddItem WD.BStableDark
-        .AddItem WD.BStableDarkStripped
-        .AddItem WD.BStableDarkHover
-        .AddItem WD.BStableborderless
-        .AddItem WD.BStabletheadDark
-        .AddItem WD.BStabletheadLight
-        .AddItem WD.BStableSmall
-        .AddItem WD.BStableColorPrimary
-        .AddItem WD.BStableColorSuccess
-        .AddItem WD.BStableColorDanger
-        .AddItem WD.BStableColorInfo
-        .AddItem WD.BStableColorWarning
-        .AddItem WD.BStableColorActive
-        .AddItem WD.BStableColorSecondary
-        .AddItem WD.BStableColorLight
-        .AddItem WD.BStableColorDark
+        .AddItem "btn-primary"
+        .AddItem "btn-secondary"
+        .AddItem "btn-success"
+        .AddItem "btn-info"
+        .AddItem "btn-warning"
+        .AddItem "btn-danger"
+        .AddItem "btn-dark"
+        .AddItem "btn-light"
+        .AddItem "btn-link"
     End With
     
     With Me.WDMartricsStyle3
-        .AddItem WD.BScontainerDanger
-        .AddItem WD.BScontainerInfo
-        .AddItem WD.BScontainerWarning
-        .AddItem WD.BScontainerSecondary
-        .AddItem WD.BStextWhite
-        .AddItem WD.BStextPrimary
-        .AddItem WD.BStextDark
-        .AddItem WD.BStextDanger
-        .AddItem WD.BStextInfo
-        .AddItem WD.BStextWarning
-        .AddItem WD.BStextSecondary
-        .AddItem WD.BStablePlane
-        .AddItem WD.BStableStripped
-        .AddItem WD.BStableBorered
-        .AddItem WD.BStableHover
-        .AddItem WD.BStableDark
-        .AddItem WD.BStableDarkStripped
-        .AddItem WD.BStableDarkHover
-        .AddItem WD.BStableborderless
-        .AddItem WD.BStabletheadDark
-        .AddItem WD.BStabletheadLight
-        .AddItem WD.BStableSmall
-        .AddItem WD.BStableColorPrimary
-        .AddItem WD.BStableColorSuccess
-        .AddItem WD.BStableColorDanger
-        .AddItem WD.BStableColorInfo
-        .AddItem WD.BStableColorWarning
-        .AddItem WD.BStableColorActive
-        .AddItem WD.BStableColorSecondary
-        .AddItem WD.BStableColorLight
-        .AddItem WD.BStableColorDark
+        .AddItem "btn-primary"
+        .AddItem "btn-secondary"
+        .AddItem "btn-success"
+        .AddItem "btn-info"
+        .AddItem "btn-warning"
+        .AddItem "btn-danger"
+        .AddItem "btn-dark"
+        .AddItem "btn-light"
+        .AddItem "btn-link"
     End With
     
     With Me.WDMartricsStyle4
-        .AddItem WD.BScontainerDanger
-        .AddItem WD.BScontainerInfo
-        .AddItem WD.BScontainerWarning
-        .AddItem WD.BScontainerSecondary
-        .AddItem WD.BStextWhite
-        .AddItem WD.BStextPrimary
-        .AddItem WD.BStextDark
-        .AddItem WD.BStextDanger
-        .AddItem WD.BStextInfo
-        .AddItem WD.BStextWarning
-        .AddItem WD.BStextSecondary
-        .AddItem WD.BStablePlane
-        .AddItem WD.BStableStripped
-        .AddItem WD.BStableBorered
-        .AddItem WD.BStableHover
-        .AddItem WD.BStableDark
-        .AddItem WD.BStableDarkStripped
-        .AddItem WD.BStableDarkHover
-        .AddItem WD.BStableborderless
-        .AddItem WD.BStabletheadDark
-        .AddItem WD.BStabletheadLight
-        .AddItem WD.BStableSmall
-        .AddItem WD.BStableColorPrimary
-        .AddItem WD.BStableColorSuccess
-        .AddItem WD.BStableColorDanger
-        .AddItem WD.BStableColorInfo
-        .AddItem WD.BStableColorWarning
-        .AddItem WD.BStableColorActive
-        .AddItem WD.BStableColorSecondary
-        .AddItem WD.BStableColorLight
-        .AddItem WD.BStableColorDark
+        .AddItem "btn-primary"
+        .AddItem "btn-secondary"
+        .AddItem "btn-success"
+        .AddItem "btn-info"
+        .AddItem "btn-warning"
+        .AddItem "btn-danger"
+        .AddItem "btn-dark"
+        .AddItem "btn-light"
+        .AddItem "btn-link"
     End With
     
     With Me.WDMartricsStyle5
-        .AddItem WD.BScontainerDanger
-        .AddItem WD.BScontainerInfo
-        .AddItem WD.BScontainerWarning
-        .AddItem WD.BScontainerSecondary
-        .AddItem WD.BStextWhite
-        .AddItem WD.BStextPrimary
-        .AddItem WD.BStextDark
-        .AddItem WD.BStextDanger
-        .AddItem WD.BStextInfo
-        .AddItem WD.BStextWarning
-        .AddItem WD.BStextSecondary
-        .AddItem WD.BStablePlane
-        .AddItem WD.BStableStripped
-        .AddItem WD.BStableBorered
-        .AddItem WD.BStableHover
-        .AddItem WD.BStableDark
-        .AddItem WD.BStableDarkStripped
-        .AddItem WD.BStableDarkHover
-        .AddItem WD.BStableborderless
-        .AddItem WD.BStabletheadDark
-        .AddItem WD.BStabletheadLight
-        .AddItem WD.BStableSmall
-        .AddItem WD.BStableColorPrimary
-        .AddItem WD.BStableColorSuccess
-        .AddItem WD.BStableColorDanger
-        .AddItem WD.BStableColorInfo
-        .AddItem WD.BStableColorWarning
-        .AddItem WD.BStableColorActive
-        .AddItem WD.BStableColorSecondary
-        .AddItem WD.BStableColorLight
-        .AddItem WD.BStableColorDark
+        .AddItem "btn-primary"
+        .AddItem "btn-secondary"
+        .AddItem "btn-success"
+        .AddItem "btn-info"
+        .AddItem "btn-warning"
+        .AddItem "btn-danger"
+        .AddItem "btn-dark"
+        .AddItem "btn-light"
+        .AddItem "btn-link"
     End With
     
     With Me.WDMartricsStyle6
-        .AddItem WD.BScontainerDanger
-        .AddItem WD.BScontainerInfo
-        .AddItem WD.BScontainerWarning
-        .AddItem WD.BScontainerSecondary
-        .AddItem WD.BStextWhite
-        .AddItem WD.BStextPrimary
-        .AddItem WD.BStextDark
-        .AddItem WD.BStextDanger
-        .AddItem WD.BStextInfo
-        .AddItem WD.BStextWarning
-        .AddItem WD.BStextSecondary
-        .AddItem WD.BStablePlane
-        .AddItem WD.BStableStripped
-        .AddItem WD.BStableBorered
-        .AddItem WD.BStableHover
-        .AddItem WD.BStableDark
-        .AddItem WD.BStableDarkStripped
-        .AddItem WD.BStableDarkHover
-        .AddItem WD.BStableborderless
-        .AddItem WD.BStabletheadDark
-        .AddItem WD.BStabletheadLight
-        .AddItem WD.BStableSmall
-        .AddItem WD.BStableColorPrimary
-        .AddItem WD.BStableColorSuccess
-        .AddItem WD.BStableColorDanger
-        .AddItem WD.BStableColorInfo
-        .AddItem WD.BStableColorWarning
-        .AddItem WD.BStableColorActive
-        .AddItem WD.BStableColorSecondary
-        .AddItem WD.BStableColorLight
-        .AddItem WD.BStableColorDark
+        .AddItem "btn-primary"
+        .AddItem "btn-secondary"
+        .AddItem "btn-success"
+        .AddItem "btn-info"
+        .AddItem "btn-warning"
+        .AddItem "btn-danger"
+        .AddItem "btn-dark"
+        .AddItem "btn-light"
+        .AddItem "btn-link"
     End With
     
     With Me.WDMartricsStyle7
-        .AddItem WD.BScontainerDanger
-        .AddItem WD.BScontainerInfo
-        .AddItem WD.BScontainerWarning
-        .AddItem WD.BScontainerSecondary
-        .AddItem WD.BStextWhite
-        .AddItem WD.BStextPrimary
-        .AddItem WD.BStextDark
-        .AddItem WD.BStextDanger
-        .AddItem WD.BStextInfo
-        .AddItem WD.BStextWarning
-        .AddItem WD.BStextSecondary
-        .AddItem WD.BStablePlane
-        .AddItem WD.BStableStripped
-        .AddItem WD.BStableBorered
-        .AddItem WD.BStableHover
-        .AddItem WD.BStableDark
-        .AddItem WD.BStableDarkStripped
-        .AddItem WD.BStableDarkHover
-        .AddItem WD.BStableborderless
-        .AddItem WD.BStabletheadDark
-        .AddItem WD.BStabletheadLight
-        .AddItem WD.BStableSmall
-        .AddItem WD.BStableColorPrimary
-        .AddItem WD.BStableColorSuccess
-        .AddItem WD.BStableColorDanger
-        .AddItem WD.BStableColorInfo
-        .AddItem WD.BStableColorWarning
-        .AddItem WD.BStableColorActive
-        .AddItem WD.BStableColorSecondary
-        .AddItem WD.BStableColorLight
-        .AddItem WD.BStableColorDark
+        .AddItem "btn-primary"
+        .AddItem "btn-secondary"
+        .AddItem "btn-success"
+        .AddItem "btn-info"
+        .AddItem "btn-warning"
+        .AddItem "btn-danger"
+        .AddItem "btn-dark"
+        .AddItem "btn-light"
+        .AddItem "btn-link"
     End With
     
     With Me.WDMartricsStyle8
-        .AddItem WD.BScontainerDanger
-        .AddItem WD.BScontainerInfo
-        .AddItem WD.BScontainerWarning
-        .AddItem WD.BScontainerSecondary
-        .AddItem WD.BStextWhite
-        .AddItem WD.BStextPrimary
-        .AddItem WD.BStextDark
-        .AddItem WD.BStextDanger
-        .AddItem WD.BStextInfo
-        .AddItem WD.BStextWarning
-        .AddItem WD.BStextSecondary
-        .AddItem WD.BStablePlane
-        .AddItem WD.BStableStripped
-        .AddItem WD.BStableBorered
-        .AddItem WD.BStableHover
-        .AddItem WD.BStableDark
-        .AddItem WD.BStableDarkStripped
-        .AddItem WD.BStableDarkHover
-        .AddItem WD.BStableborderless
-        .AddItem WD.BStabletheadDark
-        .AddItem WD.BStabletheadLight
-        .AddItem WD.BStableSmall
-        .AddItem WD.BStableColorPrimary
-        .AddItem WD.BStableColorSuccess
-        .AddItem WD.BStableColorDanger
-        .AddItem WD.BStableColorInfo
-        .AddItem WD.BStableColorWarning
-        .AddItem WD.BStableColorActive
-        .AddItem WD.BStableColorSecondary
-        .AddItem WD.BStableColorLight
-        .AddItem WD.BStableColorDark
+        .AddItem "btn-primary"
+        .AddItem "btn-secondary"
+        .AddItem "btn-success"
+        .AddItem "btn-info"
+        .AddItem "btn-warning"
+        .AddItem "btn-danger"
+        .AddItem "btn-dark"
+        .AddItem "btn-light"
+        .AddItem "btn-link"
     End With
     
     With Me.WDMartricsStyle9
-        .AddItem WD.BScontainerDanger
-        .AddItem WD.BScontainerInfo
-        .AddItem WD.BScontainerWarning
-        .AddItem WD.BScontainerSecondary
-        .AddItem WD.BStextWhite
-        .AddItem WD.BStextPrimary
-        .AddItem WD.BStextDark
-        .AddItem WD.BStextDanger
-        .AddItem WD.BStextInfo
-        .AddItem WD.BStextWarning
-        .AddItem WD.BStextSecondary
-        .AddItem WD.BStablePlane
-        .AddItem WD.BStableStripped
-        .AddItem WD.BStableBorered
-        .AddItem WD.BStableHover
-        .AddItem WD.BStableDark
-        .AddItem WD.BStableDarkStripped
-        .AddItem WD.BStableDarkHover
-        .AddItem WD.BStableborderless
-        .AddItem WD.BStabletheadDark
-        .AddItem WD.BStabletheadLight
-        .AddItem WD.BStableSmall
-        .AddItem WD.BStableColorPrimary
-        .AddItem WD.BStableColorSuccess
-        .AddItem WD.BStableColorDanger
-        .AddItem WD.BStableColorInfo
-        .AddItem WD.BStableColorWarning
-        .AddItem WD.BStableColorActive
-        .AddItem WD.BStableColorSecondary
-        .AddItem WD.BStableColorLight
-        .AddItem WD.BStableColorDark
+        .AddItem "btn-primary"
+        .AddItem "btn-secondary"
+        .AddItem "btn-success"
+        .AddItem "btn-info"
+        .AddItem "btn-warning"
+        .AddItem "btn-danger"
+        .AddItem "btn-dark"
+        .AddItem "btn-light"
+        .AddItem "btn-link"
     End With
     
     With Me.WDMartricsStyle10
-        .AddItem WD.BScontainerDanger
-        .AddItem WD.BScontainerInfo
-        .AddItem WD.BScontainerWarning
-        .AddItem WD.BScontainerSecondary
-        .AddItem WD.BStextWhite
-        .AddItem WD.BStextPrimary
-        .AddItem WD.BStextDark
-        .AddItem WD.BStextDanger
-        .AddItem WD.BStextInfo
-        .AddItem WD.BStextWarning
-        .AddItem WD.BStextSecondary
-        .AddItem WD.BStablePlane
-        .AddItem WD.BStableStripped
-        .AddItem WD.BStableBorered
-        .AddItem WD.BStableHover
-        .AddItem WD.BStableDark
-        .AddItem WD.BStableDarkStripped
-        .AddItem WD.BStableDarkHover
-        .AddItem WD.BStableborderless
-        .AddItem WD.BStabletheadDark
-        .AddItem WD.BStabletheadLight
-        .AddItem WD.BStableSmall
-        .AddItem WD.BStableColorPrimary
-        .AddItem WD.BStableColorSuccess
-        .AddItem WD.BStableColorDanger
-        .AddItem WD.BStableColorInfo
-        .AddItem WD.BStableColorWarning
-        .AddItem WD.BStableColorActive
-        .AddItem WD.BStableColorSecondary
-        .AddItem WD.BStableColorLight
-        .AddItem WD.BStableColorDark
+        .AddItem "btn-primary"
+        .AddItem "btn-secondary"
+        .AddItem "btn-success"
+        .AddItem "btn-info"
+        .AddItem "btn-warning"
+        .AddItem "btn-danger"
+        .AddItem "btn-dark"
+        .AddItem "btn-light"
+        .AddItem "btn-link"
     End With
     
 End Sub
@@ -2429,6 +2209,8 @@ Sub WriteHTMLDocument()
     HTML = HTML & "</head>" & vbNewLine
     HTML = HTML & "<body class='body'>" & vbNewLine
     
+    'Navigation Bar
+    If WDdata(Me.WDPage, 0, 0, 2) = True Then HTML = HTML & WDNavigationBar()
     
     For R = 1 To AD2
         
@@ -2441,7 +2223,7 @@ Sub WriteHTMLDocument()
         i = i - 1
         
         On Error GoTo nxt:
-        HTML = HTML & "<div style='grid-template-columns: repeat(auto-fit, minmax(" & 100 / i & "%, " & 100 / i & "%));' class='wrapper'>" & vbNewLine
+        HTML = HTML & "<div style='grid-template-columns: repeat(auto-fit, minmax(" & 100 / i & "%, " & 100 / i & "%));' align='center' class='wrapper'>" & vbNewLine
 nxt:
         On Error GoTo 0
 
@@ -2449,7 +2231,7 @@ nxt:
         For C = 1 To AD3
             'On Error GoTo enCol:
             If WDdata(Me.WDPage, R, C, 195) = False Then Exit For
-            HTML = HTML & "<div>" & vbNewLine
+            HTML = HTML & "<div style='padding-bottom:10px;'>" & vbNewLine
                 'Text
                 If WDdata(Me.WDPage, R, C, 191) = True Then
                     HTML = HTML & WDdata(Me.WDPage, R, C, 1) & vbNewLine
@@ -2457,7 +2239,14 @@ nxt:
                 
                 'Metrics
                 If WDdata(Me.WDPage, R, C, 192) = True Then
-                    
+                Dim RowR As Integer
+                Dim ColC As Integer
+                RowR = R
+                ColC = C
+                '
+                HTML = HTML & "<div style=' width:" & WDdata(Me.WDPage, R, C, 82) & "%;'><b>" & vbNewLine
+                  HTML = HTML & WDMetrics(RowR, ColC)
+                HTML = HTML & "</div></b>" & vbNewLine
                 End If
                 
                 'Charts
@@ -2468,15 +2257,15 @@ nxt:
                 
                 'Table
                 If WDdata(Me.WDPage, R, C, 194) = True Then
-                    Dim RowR As Integer
-                    Dim ColC As Integer
+                    'Dim RowR As Integer
+                    'Dim ColC As Integer
                     RowR = R
                     ColC = C
                     HTML = HTML & WDTable(RowR, ColC, i)
                 End If
                 HTML = HTML & "</div>" & vbNewLine
         Next C
-        HTML = HTML & "</div>" & vbNewLine
+        HTML = HTML & "</div>" & vbNewLine '<br style='font-size:5pt;'>
 enCol:
 On Error GoTo 0
     Next R
@@ -2520,15 +2309,128 @@ On Error GoTo 0
 End Sub
 
 
+'Navigation Bar#############################################################################
+    Function WDNavigationBar() As String
+    'This function creates a HTML Navigation Bar (Fixed to the top of the screen)
+
+    'Example
+    '<nav class='navbar navbar-expand-sm bg-dark navbar-dark fixed-top' style=';'>
+    '
+    '    <a class='navbar-brand' href='#'>SOCOMD Active Tasks</a>
+    '
+    '    <ul class='navbar-nav'>
+    '
+    '        <li class='nav-item'>
+    '            <a class='nav-link' href='https://objective/id:BQ13897403'>Report Generator (Refresh)</a>
+    '        </li>
+    '
+    '    </ul>
+    '</nav>
+    
+    'References
+    'Title = WDTable(me.WDPage, 0, 0, 1)
+    'WDRibbinLinkText1-5 = WDTable(me.WDPage, 0, 0, 8-12)
+    'WDRibbinLinkURL1-5 = WDTable(me.WDPage, 0, 0, 13-17)
+    
+    'Title
+    WDNavigationBar = "<nav class='navbar navbar-expand-sm bg-dark navbar-dark fixed-top' style=';'>" & vbNewLine
+    WDNavigationBar = WDNavigationBar & "<a class='navbar-brand' href='#'>" & WDTable(Me.WDPage, 0, 0, 1) & "</a>" & vbNewLine
+    WDNavigationBar = WDNavigationBar & "<ul class='navbar-nav'>" & vbNewLine
+    
+    'Links
+    For i = 1 To 5
+        WDNavigationBar = WDNavigationBar & "<li class='nav-item'>" & vbNewLine
+            WDNavigationBar = WDNavigationBar & "<a class='nav-link' href='" & WDTable(Me.WDPage, 0, 0, i + 12) & "'>" & WDTable(Me.WDPage, 0, 0, i + 7) & "</a>" & vbNewLine
+        WDNavigationBar = WDNavigationBar & "</li>" & vbNewLine
+    Next i
+    
+    WDNavigationBar = WDNavigationBar & "</ul>" & vbNewLine
+    WDNavigationBar = WDNavigationBar & "</nav>" & vbNewLine
+    End Function
 
 
 'Data_Shaping###############################################################################
 
-    'Metrics################################################################################
-    
+
     'Charts#################################################################################
     
+    
     'Text###################################################################################
+    
+    
+    'Metrics################################################################################
+    
+    Function WDMetrics(R As Integer, C As Integer) As String
+    'This Function creates Metrics Buttons
+    'R is the Current Row
+    'C in the Current Collumn
+    
+    '##########################################################################
+    'HTML Formate   file:///H:/Objective/Objects/BQ13798497.html
+    '<div class='container'>
+    '  <button type='button' class='btn btn-primary'>
+    '    Messages <span class='badge badge-light'>4</span>
+    '  </button>
+    '  <button type='button' class='btn btn-danger'>
+    '    Notifications <span class='badge badge-light'>7</span>
+    '  </button>
+    '</div>
+
+    'Button colors/classes  https://www.w3schools.com/bootstrap4/bootstrap_buttons.asp
+    'class='btn'>Basic
+    'class='btn btn-primary'
+    '<class='btn btn-secondary'
+    'class='btn btn-success'
+    'class='btn btn-info'
+    'class='btn btn-warning'
+    'class='btn btn-danger'
+    'class='btn btn-dark'
+    'class='btn btn-light'
+    'class='btn btn-link'
+    '##########################################################################
+        
+        WDMetrics = ""
+        
+        'Count Metrics
+        For i = 1 To 10
+            If WDdata(Me.WDPage, R, C, i + 16) = "" And WDdata(Me.WDPage, R, C, i + 36) = "" Then Exit For
+        Next i
+        i = i - 1
+        If i <= 0 Then Exit Function
+        
+        '######################################################################
+        'UserForm Field Addresses
+        'WDData(Me.WDPage, R, C, ##)
+        '17-26 Text       27-36 Sheet,      37-46 Cell      47-56 Text Size  57-66 Width  67-76 Class
+        '77 Padding Left  78 Padding Right  79 Margin Left  80 Margin Right  81 Height    82 Width
+        '######################################################################
+        
+        'Creating HTML from WDData Array
+        For j = 1 To i
+        
+            'Formatting
+            'WDMetrics = WDMetrics & "<div class='container'>" & vbNewLine
+            WDMetrics = WDMetrics & "<button type='button' class='btn " & WDdata(Me.WDPage, R, C, j + 66) & _
+                        "' style='" & "  padding-left:" & WDdata(Me.WDPage, R, C, 77) & _
+                                      "; padding-Right:" & WDdata(Me.WDPage, R, C, 78) & _
+                                      "; margin-left:" & WDdata(Me.WDPage, R, C, 79) & _
+                                      "; margin-right:" & WDdata(Me.WDPage, R, C, 80) & _
+                                      "; height:" & WDdata(Me.WDPage, R, C, 81) & _
+                                      "; width:" & WDdata(Me.WDPage, R, C, j + 56) & _
+                                      "; font-size:" & WDdata(Me.WDPage, R, C, j + 46) & "pt;" & _
+                        "'><b>" & vbNewLine
+                        
+            'Measure
+            WDMetrics = "<b>" & WDMetrics & WDdata(Me.WDPage, R, C, j + 16) & _
+                        " <span class='badge badge-light' style='" & "font-size:" & WDdata(Me.WDPage, R, C, j + 46) & "pt;'" & ">" & _
+                        Worksheets(WDdata(Me.WDPage, R, C, j + 26)).Range(WDdata(Me.WDPage, R, C, j + 36)).Value & vbNewLine
+                        
+            'Closing
+            WDMetrics = WDMetrics & "</b></button>" & vbNewLine & vbNewLine
+            'WDMetrics = WDMetrics & "</div>" & vbNewLine
+        Next j
+    End Function
+    
     
  
     
