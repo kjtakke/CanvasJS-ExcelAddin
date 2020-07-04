@@ -92,14 +92,6 @@ Public XLWD As String
     Public WDChartLegendTextSizeIsNumeric
     Public WDChartTooltipBorderRadiousIsNumeric
 
-Private Sub Label7_Click()
-
-End Sub
-
-Private Sub Label86_Click()
-
-End Sub
-
 'Spare Delimiters https://passwordsgenerator.net/
     '7,}fu?[K3b;Cnc:(=&-?')9dzr!?$C35}B2&dZSQF-QW9/q\~+':yBVA86R3D7E*U!2bX^(CxdB#kM>K7m>v6gj6p&([F=jjgt3bJ6D&7zF)>&L!xMhaQq:2CF$qM$>
     'n&:>}spv2k;jP)XjyAMF5V.W[Ds'K~awWTZRHP3gX7Y5pj3~5K,=)*d6_ENaz-Q:x5A^zm4~DkR`$;!DKP<^v=39}Q96.GJ,H5&)u'g)<<[\br3DAJ!W/-duuk?h;sfU
